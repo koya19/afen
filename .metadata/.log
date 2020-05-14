@@ -7349,3 +7349,105 @@ Caused by: java.net.ConnectException: Connect to github.com:443 [github.com/198.
 	at org.eclipse.jgit.util.HttpSupport.response(HttpSupport.java:237)
 	at org.eclipse.jgit.transport.TransportHttp.connect(TransportHttp.java:540)
 	... 6 more
+
+!ENTRY org.eclipse.egit.core 4 0 2020-05-14 20:59:43.460
+!MESSAGE An exception occurred during push on URI https://github.com/afafrh/JAVA-PROJECT.git: https://github.com/afafrh/JAVA-PROJECT.git: cannot open git-receive-pack
+!STACK 0
+org.eclipse.jgit.api.errors.TransportException: https://github.com/afafrh/JAVA-PROJECT.git: cannot open git-receive-pack
+	at org.eclipse.jgit.api.PushCommand.call(PushCommand.java:180)
+	at org.eclipse.egit.core.op.PushOperation.run(PushOperation.java:217)
+	at org.eclipse.egit.ui.internal.push.PushJob.performJob(PushJob.java:86)
+	at org.eclipse.egit.ui.internal.jobs.RepositoryJob.run(RepositoryJob.java:59)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.errors.TransportException: https://github.com/afafrh/JAVA-PROJECT.git: cannot open git-receive-pack
+	at org.eclipse.jgit.transport.TransportHttp.connect(TransportHttp.java:626)
+	at org.eclipse.jgit.transport.TransportHttp.openPush(TransportHttp.java:467)
+	at org.eclipse.jgit.transport.PushProcess.execute(PushProcess.java:160)
+	at org.eclipse.jgit.transport.Transport.push(Transport.java:1368)
+	at org.eclipse.jgit.api.PushCommand.call(PushCommand.java:170)
+	... 4 more
+Caused by: java.net.UnknownHostException: Ceci est habituellement une erreur temporaire qui se produit durant la résolution du nom d’hôte et qui signifie que le serveur local n’a pas reçu de réponse d’un serveur faisant autorité (github.com)
+	at java.base/java.net.Inet6AddressImpl.lookupAllHostAddr(Native Method)
+	at java.base/java.net.InetAddress$PlatformNameService.lookupAllHostAddr(InetAddress.java:930)
+	at java.base/java.net.InetAddress.getAddressesFromNameService(InetAddress.java:1499)
+	at java.base/java.net.InetAddress$NameServiceAddresses.get(InetAddress.java:849)
+	at java.base/java.net.InetAddress.getAllByName0(InetAddress.java:1489)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1348)
+	at java.base/java.net.InetAddress.getAllByName(InetAddress.java:1282)
+	at org.apache.http.impl.conn.SystemDefaultDnsResolver.resolve(SystemDefaultDnsResolver.java:45)
+	at org.apache.http.impl.conn.DefaultHttpClientConnectionOperator.connect(DefaultHttpClientConnectionOperator.java:112)
+	at org.apache.http.impl.conn.PoolingHttpClientConnectionManager.connect(PoolingHttpClientConnectionManager.java:373)
+	at org.apache.http.impl.execchain.MainClientExec.establishRoute(MainClientExec.java:394)
+	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:237)
+	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:185)
+	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
+	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
+	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:108)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:56)
+	at org.eclipse.jgit.transport.http.apache.HttpClientConnection.execute(HttpClientConnection.java:261)
+	at org.eclipse.jgit.transport.http.apache.HttpClientConnection.getResponseCode(HttpClientConnection.java:238)
+	at org.eclipse.jgit.util.HttpSupport.response(HttpSupport.java:229)
+	at org.eclipse.jgit.transport.TransportHttp.connect(TransportHttp.java:540)
+	... 8 more
+
+!ENTRY org.eclipse.egit.ui 4 0 2020-05-14 20:59:43.557
+!MESSAGE Can't connect to any repository: https://github.com/afafrh/JAVA-PROJECT.git (https://github.com/afafrh/JAVA-PROJECT.git: cannot open git-receive-pack)
+
+!ENTRY org.eclipse.egit.core 4 0 2020-05-14 21:13:23.977
+!MESSAGE An exception occurred during push on URI https://github.com/afafrh/JAVA-PROJECT.git: https://github.com/afafrh/JAVA-PROJECT.git: Read timed out after 300 000 ms
+!STACK 0
+org.eclipse.jgit.errors.TransportException: https://github.com/afafrh/JAVA-PROJECT.git: Read timed out after 300 000 ms
+	at org.eclipse.jgit.transport.BasePackPushConnection.doPush(BasePackPushConnection.java:239)
+	at org.eclipse.jgit.transport.TransportHttp$SmartHttpPushConnection.doPush(TransportHttp.java:1354)
+	at org.eclipse.jgit.transport.BasePackPushConnection.push(BasePackPushConnection.java:170)
+	at org.eclipse.jgit.transport.PushProcess.execute(PushProcess.java:172)
+	at org.eclipse.jgit.transport.Transport.push(Transport.java:1368)
+	at org.eclipse.egit.core.op.PushOperation.run(PushOperation.java:191)
+	at org.eclipse.egit.ui.internal.push.PushJob.performJob(PushJob.java:86)
+	at org.eclipse.egit.ui.internal.jobs.RepositoryJob.run(RepositoryJob.java:59)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.InterruptedIOException: Read timed out after 300 000 ms
+	at org.eclipse.jgit.util.io.TimeoutInputStream.readTimedOut(TimeoutInputStream.java:153)
+	at org.eclipse.jgit.util.io.TimeoutInputStream.read(TimeoutInputStream.java:125)
+	at org.eclipse.jgit.util.IO.readFully(IO.java:234)
+	at org.eclipse.jgit.transport.PacketLineIn.readLength(PacketLineIn.java:313)
+	at org.eclipse.jgit.transport.SideBandInputStream.needDataPacket(SideBandInputStream.java:157)
+	at org.eclipse.jgit.transport.SideBandInputStream.read(SideBandInputStream.java:139)
+	at org.eclipse.jgit.util.IO.readFully(IO.java:234)
+	at org.eclipse.jgit.transport.PacketLineIn.readLength(PacketLineIn.java:313)
+	at org.eclipse.jgit.transport.PacketLineIn.readString(PacketLineIn.java:177)
+	at org.eclipse.jgit.transport.BasePackPushConnection.readStringLongTimeout(BasePackPushConnection.java:437)
+	at org.eclipse.jgit.transport.BasePackPushConnection.readStatusReport(BasePackPushConnection.java:370)
+	at org.eclipse.jgit.transport.BasePackPushConnection.doPush(BasePackPushConnection.java:222)
+	... 8 more
+
+!ENTRY org.eclipse.egit.ui 4 0 2020-05-14 21:13:24.261
+!MESSAGE Can't connect to any repository: https://github.com/afafrh/JAVA-PROJECT.git (https://github.com/afafrh/JAVA-PROJECT.git: Read timed out after 300 000 ms)
+
+!ENTRY org.eclipse.equinox.security 1 0 2020-05-14 22:19:17.466
+!MESSAGE New keyring password generated. 
+
+!ENTRY org.eclipse.egit.core 4 0 2020-05-14 23:16:33.824
+!MESSAGE Pulling 1 repository
+!SUBENTRY 1 org.eclipse.egit.core 4 0 2020-05-14 23:16:33.824
+!MESSAGE https://github.com/afafrh/JAVA-PROJECT.git: cannot open git-upload-pack
+!STACK 0
+org.eclipse.jgit.api.errors.TransportException: https://github.com/afafrh/JAVA-PROJECT.git: cannot open git-upload-pack
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:255)
+	at org.eclipse.jgit.api.PullCommand.call(PullCommand.java:296)
+	at org.eclipse.egit.core.op.PullOperation$PullJob.run(PullOperation.java:256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.errors.TransportException: https://github.com/afafrh/JAVA-PROJECT.git: cannot open git-upload-pack
+	at org.eclipse.jgit.transport.TransportHttp.connect(TransportHttp.java:626)
+	at org.eclipse.jgit.transport.TransportHttp.openFetch(TransportHttp.java:392)
+	at org.eclipse.jgit.transport.FetchProcess.executeImp(FetchProcess.java:138)
+	at org.eclipse.jgit.transport.FetchProcess.execute(FetchProcess.java:124)
+	at org.eclipse.jgit.transport.Transport.fetch(Transport.java:1293)
+	at org.eclipse.jgit.api.FetchCommand.call(FetchCommand.java:244)
+	... 3 more
+Caused by: java.net.ConnectException: Connect to github.com:443 [github.com/198.18.1.224] failed: Connection timed out: no further information github.com
+	at org.eclipse.jgit.util.HttpSupport.response(HttpSupport.java:237)
+	at org.eclipse.jgit.transport.TransportHttp.connect(TransportHttp.java:540)
+	... 8 more
