@@ -1,0 +1,20 @@
+package learn;
+
+public class Ville  {
+	
+	protected String Nom;
+	protected int nbrH;
+	
+	public Ville(String a, int b)throws exeptionh,NomvilleExxeption 
+	{
+		if (a.length()>=3)throw new NomvilleExxeption("miyami");
+		
+		if (b<=0) throw new exeptionh();
+		else 
+			{
+			nbrH=b;
+			Nom=a;
+			}
+		System.out.println("hey");
+	}
+}

@@ -1,0 +1,147 @@
+package AIAC;
+
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
+
+import gestiondenotes.Absence;
+import gestiondenotes.Element;
+import gestiondenotes.Module;
+public class Ecole {
+	protected  String nomEcole;
+	protected  String abrEcole;
+	protected  String adressEcole;
+	protected  String fondateur;
+	protected  String type;
+	protected  Set <Student> studEcole=new TreeSet<>();
+	protected  Set <Class> classEcole= new TreeSet<>();
+	//protected  Set <Promo> promoEcole= new HashSet<>();
+	protected  Set <Filiere> filiereEcole= new TreeSet<>();
+	protected  Set <Respo> respoEcole = new HashSet<>();
+	public Map <Integer , Element > Salle= new HashMap<>();
+	Scanner sc=new Scanner(System.in);
+	String Newligne=System.getProperty("line.separator");
+	
+	public Ecole() {
+		
+	}
+	
+	public Ecole(String nomEcole, String abrEcole,String fondateur,String type, String adressEcole) {
+	
+		this.nomEcole = nomEcole;
+		this.abrEcole = abrEcole;
+		this.adressEcole = adressEcole;
+		this.fondateur=fondateur;
+		this.type=type;
+		
+	}
+	public void addAbsence(String date,int classechoisi,int studchoisi,int modulechoisi,int elementchoisi) throws ParseException{
+		 Date d=s.parse(date);
+		 int v=0;
+		 for (Absence a :this.abs) {
+			 if(a.getElement().equals(this.ecole.choisirClass(classechoisi).choisirModule(modulechoisi).choisieElement(elementchoisi))&& a.getDate()==d){
+				 
+				 a.addAbsence(this.ecole.choisirClass(classechoisi).choisirStud(studchoisi));
+				 v=1;
+			 break;
+			 }
+			 		 
+		 }
+		 if (v==0) {
+			Absence abs=new Absence(this.ecole.choisirClass(classechoisi).choisirModule(modulechoisi).choisieElement(elementchoisi),date);
+			abs.addAbsence(this.ecole.choisirClass(classechoisi).choisirStud(studchoisi));
+		 }
+		 
+	 }
+	public void  affichestudEcole() {
+		Iterator iterator = studEcole.iterator();
+		 System.out.println("les  étudiants de l'"  + this.nomEcole);
+		
+		 while (iterator.hasNext()){
+	         System.out.println("-"+iterator.next());
+	         
+		 }
+	}
+
+	@Override
+	public String toString() {
+		return "l'Ecole " + nomEcole + "(" + abrEcole + ") est une "+type + " fondé par "+ fondateur ;
+	}
+	public void affichefiliereEcole() {
+		Iterator iterator = filiereEcole.iterator();
+		 System.out.println("les  filières de l'"  + this.nomEcole);
+		 int i=1;
+		 while (iterator.hasNext()){
+	         System.out.println(i+"- "+iterator.next());
+	         i++;
+		 }
+		
+	}
+	public void afficheclassEcole() {
+		Iterator iterator = classEcole.iterator();
+		 System.out.println("les  classe de l'"  + this.nomEcole);
+		 int i=1;
+		 while (iterator.hasNext()){
+	         System.out.println(i+"- "+iterator.next());
+	         i++;
+		 }
+		 
+	}
+	public void afficheclassEcole(Filiere f) {
+		Iterator iterator = classEcole.iterator();
+		 System.out.println("les  classe de la"  + f);
+		 int i=1;
+		 while (iterator.hasNext()){
+			 Class cl=(Class) iterator.next();
+			 if (cl.filiere==f) {
+	         System.out.println(i+"- "+iterator.next());
+	         i++;
+			 }
+		 }
+	}
+	
+	 
+	/*public Filiere choisirFiliere (int filierechoisie) {
+		 Filiere filiere= new Filiere();
+		 int i=1;
+			for (Filiere f:this.filiereEcole ) {
+				if (i==filierechoisie) {
+					filiere=f;
+					break;
+				}
+				else i++;
+			}
+			return filiere;
+	 }*/
+	public Class choisirClass(int a) {
+		int i=1;
+		 for (Class c : this.classEcole) {
+			 if(i==a) {
+				 return c;		
+			 }
+			 else i++;
+		 }
+		 return null;
+	}
+	public Filiere choisirFiliere(int a) {
+		int i=1;
+		 for (Filiere f : this.filiereEcole) {
+			 if(i==a) {
+				 return f;		
+			 }
+			 else i++;
+		 }
+		 return null;
+	}
+	}
+
+	
+

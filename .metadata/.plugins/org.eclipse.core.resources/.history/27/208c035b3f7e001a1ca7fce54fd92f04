@@ -1,0 +1,32 @@
+package AIAC;
+import java.util.*;
+
+public class Class {
+	protected Promo p;
+	protected Filiere f;
+		List <Student> l =new ArrayList <>();
+//-----------------------------------------------------------------------------------------	
+	public Class() {
+		System.out.println("vous avez creer la classe indéfinit" );
+	}
+	public Class(Promo a,Filiere b) {
+		p=a ;
+		f=b ;
+		
+		System.out.println("vous avez creer la classe " + f.nomFilière+" "+ p.nPromo );
+	}
+//-----------------------------------------------------------------------------------------	
+	public void addStud (String a, String b) {
+		Student s= new Student (a,b);
+		l.add(s);
+		Collections.sort(l);
+		System.out.println("vous avez ajouter l'étudiant "+ s.firstnameStud +" "+ s.lastnameStud+ " à la classe "+ f.nomFilière+" "+p.nPromo);
+
+	}
+	public void addStud(Student s) {
+		l.add(s);
+		Collections.sort(l);
+		System.out.println("vous avez ajouter l'étudiant "+ s.firstnameStud +" "+ s.lastnameStud+ " à la classe "+ f.nomFilière+" "+p.nPromo);
+
+	}
+}

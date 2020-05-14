@@ -1,0 +1,28 @@
+package learn;
+
+
+abstract public class animal {
+
+	protected String nom;
+	protected int poid;
+	
+	public void manger() {
+		System.out.println("je mange de la viande");
+	}
+	
+	public void boire() {
+		System.out.println("je bois de l'eau");
+		
+	}
+	
+	abstract public void deplasser();
+	abstract public void crier ();
+	
+	public String toString ()
+	{
+		String str="Je suis un objet de la " + this.getClass() + ", je suis "  + ", je pèse " + this.poid ; 
+		return str;
+	}
+	
+	
+}

@@ -1,0 +1,22 @@
+package learn;
+import java.util.*;
+import java.lang.Enum;
+
+ enum animal{
+	chien,
+	loup,
+	;
+}
+
+public class A {
+	public static void main(String[] args){
+		
+		for(animal lang : animal.values()){
+		      if(animal.chien.equals(lang))
+		        System.out.println("J'aime le : " + lang);
+		      else
+		        System.out.println(lang);
+		    }
+		
+			}
+}

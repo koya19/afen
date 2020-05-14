@@ -1,0 +1,26 @@
+package AIAC;
+
+public class administrateur extends Personne{
+protected String profession;
+ public administrateur () {
+	 super();
+	 profession="";
+ }
+ public administrateur(String a,String b,String c) {
+	 super(a,b,c);
+	 profession ="";
+	 System.out.println(this.toString());
+	 
+ }
+ public administrateur(String a,String b,String c,String d) {
+	 super(a,b,c);
+	 profession =d;
+	 System.out.println(this.toString()+"de profession"+ profession);
+ 
+}
+@Override
+public String toString() {
+	return "vous êtes " +  lastnamePers +" "+ firstnamePers ;
+}
+}
+ 

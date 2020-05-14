@@ -1,0 +1,13 @@
+package lolo;
+
+public class m {
+
+	public m(int a) throws EXC {
+		if (a<12) {
+			throw new IllegalArgumentException("le nombre est inférieur de 12");
+		}
+		if (a%2 !=2) {
+			throw new EXC();
+		}
+	}
+}

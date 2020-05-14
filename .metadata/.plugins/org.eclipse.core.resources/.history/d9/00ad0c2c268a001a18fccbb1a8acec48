@@ -1,0 +1,107 @@
+package gestiondenotes;
+import AIAC.Class;
+import AIAC.Prof;
+import AIAC.Student;
+import java.util.*;
+
+public class Element {
+	protected String nomElement;
+	protected Module module;
+	protected Prof prof ;
+	protected int hours;
+	protected Map<Student,Integer> noteElement= new TreeMap<>();
+	protected Map<String,Integer> repartheureElement= new HashMap<>();
+	protected Map<String, Prof> enseignantElement= new HashMap<>();
+	
+//-------------------CONSTRUCTEUR--------------------------------------------------	
+	public Element () {
+		nomElement="";
+	}
+	public Element (String nomElement, Module module) {
+		
+		this.nomElement=nomElement;
+		this.module=module;
+		module.eleModule.add(this);
+		
+		System.out.println("creation " +this.toString());
+		 Iterator iterator = module.cl.stud.iterator();
+		 while (iterator.hasNext()){
+	         noteElement.put((Student)iterator.next(),-1);
+		 }
+		 
+		 this.repartheureElement.put("CM",0);
+		 this.repartheureElement.put("TD",0);
+		 this.repartheureElement.put("TP",0);
+		 this.repartheureElement.put("AP",0);
+		 
+		 this.repartheureElement.put("CM",0);
+		 this.repartheureElement.put("TD",0);
+		 this.repartheureElement.put("TP",0);
+		 this.repartheureElement.put("AP",0);
+		 
+				
+	}
+//--------------------NOTES---------------------------------------------------------
+	public void modnote(Student student,int note) {
+		if (noteElement.containsKey(student)) {
+		noteElement.put(student,note);
+		}
+		else 
+			System.out.println("l'etudiant "+ student.toString() +" n'appartient pas à " + module.cl.toString());
+	}
+	
+	public void affichenoteElement() {
+		System.out.println("les notes de l'element " + this.nomElement+" du "+this.module);
+		for (Map.Entry mapentry : noteElement.entrySet()) {
+	           System.out.println(mapentry.getKey()+ "   " + mapentry.getValue());
+	        }
+	}
+//--------------------REPARTION D'ELEMENT----------------------------------------------------
+	
+	public void modhours(){
+		Scanner sc= new Scanner(System.in);
+			
+		System.out.println("Entrer les heures selon la dicipline");
+		for (Map.Entry mapentry : repartheureElement.entrySet()) {
+			System.out.println(mapentry.getKey()+"  :");
+			Integer hour=sc.nextInt();
+			 repartheureElement.put((String)mapentry.getKey(),hour);
+		}
+		
+	}
+	
+	public void afficherhours() {
+	
+		System.out.println("la répartition de l'element "+ this.nomElement +" :");
+		for (Map.Entry mapentry : repartheureElement.entrySet()) {
+			System.out.println(mapentry.getKey()+"  :  " + mapentry.getValue()+" h");
+		}
+		
+	}
+	
+	public void addprof(String rep,Prof prof) {
+		enseignantElement.put(rep, prof);
+			
+	}
+	
+	public void afficheprof() {
+		System.out.println("les profs  de cet element sont : ");
+		
+		for (Map.Entry mapentry : enseignantElement.entrySet()) {
+			System.out.println(mapentry.getKey()+"  :  " + mapentry.getValue());
+		}
+	}
+	
+//--------------------GETTER&SETTER&toString-------------------------------------------------
+	
+	
+
+	
+
+	
+	
+	
+	
+	
+
+}

@@ -1,0 +1,44 @@
+package AIAC;
+
+import java.util.*;
+
+public class project {
+	public static void main(String[] args) {
+		Filiere f1=new Filiere("GI");
+		Filiere f2=new Filiere("GEET");
+		
+		Promo p = new Promo (16);
+		
+		Class c1=new Class (f1,p);
+		Class c2= new Class(f2,p);
+		
+		Student s=new Student("RHIF","AFAF");
+		Student s1=new Student ("LAHBIL","MOHAMMED");
+		Student s2= new Student ("APAAA","NOAMAN");
+		
+	
+		
+		c1.addStud(s);
+		c1.addStud(s1);
+		c1.addStud(s2);
+		c1.affichestudClass();		
+		
+		c2.addStud(s2);
+		//f1.afficheClassFiliere();
+		//f2.afficheClassFiliere();
+		//p.afficheClassPromo();
+		
+		
+		
+	
+		
+		
+		
+		
+		
+		
+		
+		
+}
+
+}

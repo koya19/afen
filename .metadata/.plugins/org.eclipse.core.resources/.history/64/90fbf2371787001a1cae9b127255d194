@@ -1,0 +1,34 @@
+package AIAC;
+
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class Ecole {
+	protected  String nomEcole;
+	protected  String abrEcole;
+	protected  String adressEcole;
+	protected Set <Student> studEcole=new TreeSet<>();
+	
+	public Ecole() {
+		
+	}
+	
+	public Ecole(String nomEcole, String abrEcole, String adressEcole) {
+	
+		this.nomEcole = nomEcole;
+		this.abrEcole = abrEcole;
+		this.adressEcole = adressEcole;
+		
+	}
+	
+	public void  studEcole() {
+		Iterator iterator = studEcole.iterator();
+		 System.out.println("les  étudiants de l'"  + this.nomEcole);	
+		 while (iterator.hasNext()){
+	         System.out.println(iterator.next());
+		 }
+	}
+	
+	
+}

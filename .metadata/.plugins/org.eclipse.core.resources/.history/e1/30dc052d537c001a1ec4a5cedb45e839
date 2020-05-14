@@ -1,0 +1,27 @@
+package learn;
+
+public class Capitale extends ville
+{
+	protected String monument;
+	public Capitale(String a, String b, int c,String d) {
+		super(a,b,c);
+		monument=d;
+		
+		
+	}
+	    public String decrisToi(){
+		    String str =  super.decrisToi() + "\n \t ==>>" + this.monument+ " en est un monument";
+		    System.out.println(str);
+		    
+		    return str;
+	    }
+	    public String toString(){
+	    	  String str = super.toString() + "\n \t ==>>" + this.monument + " en est un monument";
+	    	  return str;
+	    	  }
+	    int a;
+	    
+		   
+	
+
+}

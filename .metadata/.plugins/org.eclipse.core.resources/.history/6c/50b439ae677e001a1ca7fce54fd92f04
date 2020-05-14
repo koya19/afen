@@ -1,0 +1,18 @@
+package AIAC;
+
+import java.util.*;
+
+public class project {
+	public static void main(String[] args) {
+		Filiere f=new Filiere("GI");
+		Promo p=new Promo (f,16);
+		
+		Student s=new Student("RH","AFAF");
+		
+		
+		
+		
+		
+}
+
+}

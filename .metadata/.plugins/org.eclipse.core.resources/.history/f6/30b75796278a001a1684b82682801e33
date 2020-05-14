@@ -1,0 +1,53 @@
+package gestiondenotes;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+public class EDT {
+	protected Date begin=new Date();
+	protected Date end = new Date();
+	protected Map<String,String> matin = new TreeMap<>();
+	protected Map<String,String> apresmidi = new TreeMap<>();
+	
+	
+	public  EDT(String date) throws ParseException {
+		SimpleDateFormat s= new SimpleDateFormat("dd MM yyyy");
+		SimpleDateFormat sdf= new SimpleDateFormat("EEE dd MMMM yyyy");
+		begin=s.parse(date);
+		end=s.parse(date);
+		int i=0;
+		Element element = new Element ();
+		while (end.getDay()!=7) {
+			matin.put(i+"- "+sdf.format(end),element.getNomElement());
+			apresmidi.put(sdf.format(end),element.getNomElement());		
+			end.setDate(end.getDate()+1);	
+			i++;
+		}
+		
+		
+	}
+	
+	public void afficheEDT() {
+		SimpleDateFormat sdf= new SimpleDateFormat("EEE dd MMMM yyyy");
+		
+		
+		System.out.println("********** Emploi du temps pour la semaine de "+ sdf.format(begin)+" à "+sdf.format(end)+" **********");
+		for (Map.Entry mapentry : matin.entrySet()) {
+			
+	           System.out.println(mapentry.getKey()+ "     "+mapentry.getValue()+"     "+ apresmidi.get(mapentry.getKey()) );
+	        }
+	}
+
+	public Date getBegin() {
+		return begin;
+	}
+	public Date getEnd() {
+		return end;
+	}
+	public void getmatin() {
+		System.out.println(matin);
+	}
+	
+	
+}

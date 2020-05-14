@@ -1,0 +1,28 @@
+package AIAC;
+import java.util.*;
+
+public class Filiere {
+protected String  nomFilière;
+protected List <Promo> f =new ArrayList<>();
+	
+	
+	public Filiere () {
+		nomFilière = "";
+		System.out.println("vous avez creer une filière indéfinit" );
+	}
+	public Filiere(String a) {
+		nomFilière= a;
+		System.out.println("vous avez créer filière "+this.toString());
+	}
+//-----------------------------------------------------------------------------
+	@Override
+	public String toString() {
+		return  nomFilière ;
+	}
+//-------------------------------------------------------------------------------
+	public void removePromoFiliere (Promo p) {
+		 f.remove(f.indexOf(p));
+	 }
+	
+
+}

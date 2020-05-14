@@ -1,0 +1,20 @@
+package AIAC;
+
+public class Prof extends Personne{
+	protected final String profession ="Professeur";
+	
+	public Prof () {
+		super();
+	}
+	public Prof (String a, String b) {
+		super (a,b);
+	}
+	public Prof (String a, String b, String c) {
+		super(a,b,c);	
+		System.out.println("vous êtes " + this.toString());
+	
+		
+	}
+	
+
+}

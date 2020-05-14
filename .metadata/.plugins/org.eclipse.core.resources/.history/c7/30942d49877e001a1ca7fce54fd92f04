@@ -1,0 +1,23 @@
+package AIAC;
+
+import java.util.*;
+
+public class project {
+	public static void main(String[] args) {
+		System.out.println("**************************BIENVENUE DANS AIACSYSTEM****************************" );
+		
+		administrateur a= new administrateur("adil","Redouan","Z12345","MA RESPO MA WALO");
+		
+		
+	
+		
+		
+		
+		
+		
+		
+		
+		
+}
+
+}

@@ -1,0 +1,64 @@
+package gestiondesEtudes;
+
+import java.util.Date;
+
+public class Student  extends Personne implements Comparable<Student> {
+	
+	protected Class c;
+	protected final String profession="étudiant";
+	
+//--------------------------------------------------------------------------------
+	public Student () {
+		super();
+	}
+	
+	public Student (String a, String b) {
+		super(a,b);	
+		System.out.println("vous avez creer l'éléve " + this.toString());
+		}
+	
+/*
+public Student(Class c,String lastnamePers, String firstnamePers, String cniPers, char gender,
+		Date date, String lieu) {
+		super(lastnamePers, firstnamePers,cniPers,gender,date,lieu);
+		this.c = c;
+	}
+*/
+//-------------------------------------------------------------------------------------------
+
+	public String getFirstnameStud() {
+		return super.firstnamePers;
+	}
+
+	public void setFirstnameStud(String firstnameStud) {
+		this.firstnamePers = firstnameStud;
+	}
+
+	public String getLastnameStud() {
+		return lastnamePers;
+	}
+
+	public void setLastnameStud(String lastnameStud) {
+		this.lastnamePers = lastnameStud;
+	}
+
+	public Class getC() {
+		return c;
+	}
+
+	public void setC(Class c) {
+		this.c = c;
+	}
+	public String toString() {
+		return     lastnamePers + " " +firstnamePers ;
+	}
+	
+//-----------------------------------------------------------------------------------------------
+	public int compareTo(Student s)
+	   {         
+	       return this.lastnamePers.compareTo(s.lastnamePers) ;    //Sorts the objects in descending order
+	   }
+	}
+
+		
+		

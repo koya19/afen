@@ -1,0 +1,18 @@
+package AIAC;
+import java.util.*;
+
+public class Class {
+	protected Promo p;
+	protected Filiere f;
+	
+	public Class() {
+		List <Student> l=new ArrayList<>();
+	}
+	public Class(Promo p,Filiere f) {
+		String a = p.nPromo + f.nomFilière ;
+		System.out.println("vous avez creer la classe" + p.nPromo+ f.nomFilière );
+				
+	}
+	
+
+}

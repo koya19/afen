@@ -1,0 +1,45 @@
+package gestiondenotes;
+import AIAC.Student;
+import AIAC.Class;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+public class Absence {
+
+	protected Date date = new Date();
+	private Element element = new Element();
+	protected boolean justification;
+	protected Map  <Student,Boolean>absStud=new HashMap<>();
+	protected Class cl;
+	SimpleDateFormat s= new SimpleDateFormat("dd MM yyyy");
+	
+	public Absence(Element element,String date) throws ParseException {
+		justification =false;
+		this.setElement(element);
+		this.date=s.parse(date);
+		this.cl=element.module.cl;
+		cl.abs.add(this);
+		for (Student s:cl.stud) {
+			absStud.put(s, false);
+		}
+		
+	}
+	
+	public void addAbsence(Student s) {
+		
+		absStud.put(s, true);
+	}
+
+	public Element getElement() {
+		return element;
+	}
+
+	public void setElement(Element element) {
+		this.element = element;
+	}
+	
+	
+}

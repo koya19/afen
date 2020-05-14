@@ -1,0 +1,9 @@
+package learn;
+
+public class A {
+	public static void main(String[] args) {
+		lion l = new lion();
+		System.out.println(l.toString());
+		
+	}
+}

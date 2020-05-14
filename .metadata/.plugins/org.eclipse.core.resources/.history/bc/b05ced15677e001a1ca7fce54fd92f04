@@ -1,0 +1,54 @@
+package AIAC;
+import java.util.*;
+
+public class Class  {
+	protected Promo p;
+	protected Filiere f;
+	protected	List <Student> l =new ArrayList <>();
+//-----------------------------------------------------------------------------------------	
+	public Class() {
+		System.out.println("vous avez creer la classe indéfinit" );
+	}
+	public Class(Filiere b,Promo a) {
+		p=a ;
+		f=b ;
+		
+		System.out.println("vous avez creer la classe " + this.toString() );
+	}
+//-----------------------------------------------------------------------------------------
+	
+//-----------------------------------------------------------------------------------------	
+	public void addStud (String a, String b) {
+		Student s= new Student (a,b);
+		l.add(s);
+		Collections.sort(l);
+		System.out.println("vous avez ajouter l'étudiant "+ s.firstnameStud +" "+ s.lastnameStud+ " à la classe "+ f.nomFilière+" "+p.nPromo);
+
+	}
+	
+	public void addStud(Student s) {
+		l.add(s);
+		Collections.sort(l);
+		System.out.println("vous avez ajouter l'étudiant "+ s.firstnameStud +" "+ s.lastnameStud+ " à la classe "+ f.nomFilière+" "+p.nPromo);
+
+	}
+	
+	public String toString() {
+		return  f.nomFilière+" "+p.nPromo ;
+	}
+	
+	public void affichestudClass() {
+		System.out.println("les éléves de la classe "  + this.toString());	
+		for (int i=0;i<l.size();i++) {			
+			System.out.println( l.get(i).toString() );
+		}
+		
+	}
+	
+	public void removeStudClass(Student s) {
+		
+		l.remove(l.indexOf(s));
+		System.out.println("vous avez retirer "+ s.toString()+"de la classe "+ this.toString());
+	}
+	
+}

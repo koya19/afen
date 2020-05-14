@@ -1,0 +1,16 @@
+package learn;
+import java.util.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+
+
+
+public class A {
+	public static void main(String[] args){
+		
+		animal a= new animal ("koala",18);
+		System.out.println(a.toString());
+	}
+}

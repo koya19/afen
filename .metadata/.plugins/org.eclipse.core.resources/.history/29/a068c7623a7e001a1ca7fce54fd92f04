@@ -1,0 +1,9 @@
+package AIAC;
+
+public class Student {
+	protected String firstnameStud;
+	protected String lastnameStud;
+	protected Class c;
+	
+
+}

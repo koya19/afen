@@ -1,0 +1,16 @@
+package learn;
+import java.lang.reflect.Method;
+public class Ville extends Thread {
+	
+	protected String Nom;
+	protected int nbrH;
+	
+	public Ville(String a, int b)
+			{
+			nbrH=b;
+			Nom=a;
+			}
+	public void run(){
+	      System.out.println(this.getName());
+	  }       
+}

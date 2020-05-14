@@ -1,0 +1,5 @@
+package gestiondesEtudes;
+
+public interface Inscription {
+
+}

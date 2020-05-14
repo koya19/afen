@@ -1,0 +1,14 @@
+package learn;
+
+public abstract class canin extends animal {
+	public canin(String n, int p) {
+		super(n, p);
+		
+	}
+
+	public void deplasser()
+	{
+		System.out.println("je me déplace en meute");
+	}
+
+}

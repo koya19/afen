@@ -1,0 +1,10 @@
+package learn;
+
+
+public class A {
+	public static void main(String[] args) {
+		double j=10_000d;
+		System.out.print(j);
+	}
+
+}

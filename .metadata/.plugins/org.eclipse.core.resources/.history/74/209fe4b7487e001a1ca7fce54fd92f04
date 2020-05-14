@@ -1,0 +1,14 @@
+package AIAC;
+
+public class Filiere {
+protected String  nomFilière;
+	
+	
+	public Filiere () {
+		nomFilière = "";
+	}
+	public Filiere(String a) {
+		nomFilière= a;
+	}
+
+}

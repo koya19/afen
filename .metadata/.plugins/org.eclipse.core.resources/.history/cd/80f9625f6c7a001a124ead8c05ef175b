@@ -1,0 +1,22 @@
+package learn;
+
+public class ville {
+	private
+		String nomVille;
+		String nomPays;
+		int nbrHabitants;
+	
+	
+	public ville() {
+		System.out.println("Création d'une ville !");
+		nomVille="Inconnu";
+		nomPays="Inconnu";
+		nbrHabitants=0;
+	}
+	public ville(String a, String b, int c) {
+		System.out.println("Création d'une ville !");
+		nomVille=a;
+		nomPays=b;
+		nbrHabitants=c;
+	}
+}

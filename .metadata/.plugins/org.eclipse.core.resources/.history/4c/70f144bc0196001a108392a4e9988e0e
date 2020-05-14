@@ -1,0 +1,56 @@
+package gestiondesEtudes;
+
+import gestiondeScolarité.Module;
+import gestiondeScolarité.Element;
+
+import java.text.ParseException;
+
+import gestiondeScolarité.Absence;
+import gestiondeScolarité.EDT;;
+
+public class test {
+
+	public static void main(String[] args) throws ParseException {
+		Ecole ecole=new Ecole();
+		Filiere f1= new Filiere("GI",ecole);
+		Filiere f2=new Filiere("GEET",ecole);
+	
+		
+		Promo p2= new Promo(15);
+		Promo p1=new Promo(16);
+		
+		Class c= new Class(f1,p1);
+		
+		Student S1=new Student ("Rhif","afaf");
+		Student S2=new Student ("LAHBIL","MOHAMMED");
+		Student S3=new Student ("ZIAD","RASSMI");
+		Student S4=new Student ("LAAROUSSI","HAMZA");
+		Student S5=new Student ("APAA","BOUIHI");
+		Student S6=new Student ("BElEhOU","JIHANE");
+		Student S7=new Student ("LAHLOU","HAMZA");
+		Student S8=new Student ("ABADI","aCHRAF");
+		Student S9=new Student ("BANI","HACHIM");
+		Student S10=new Student("Slalmi","IBTISSAM");
+		
+		c.addStud(S1);
+		c.addStud(S2);
+		c.addStud(S5);
+		c.addStud(S7);
+		c.addStud(S8);
+		c.addStud(S4);
+		c.addStud(S9);
+		c.addStud(S6);
+		c.addStud(S3);
+		c.addStud(S10);
+		
+		Module m= new Module("Programmation",c);
+		
+		Element elem=new Element ("java",m);
+		Prof prof = new Prof ("lolo"); 
+		Element em=new Element("er",m);
+		
+		InscriptionPédagogique a=new InscriptionPédagogique(ecole);
+
+	}
+
+}

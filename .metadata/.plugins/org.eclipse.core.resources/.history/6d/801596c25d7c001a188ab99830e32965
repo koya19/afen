@@ -1,0 +1,16 @@
+package learn;
+
+public class A {
+	public static void main(String[] args) {
+		int i = 1, b=2;
+		try {
+		int a =i /b;
+		System.out.println("coucou toi !");
+		}
+		catch(ArithmeticException e)
+		{
+			System.out.println("b3333333333"+ e.getMessage() );
+		}
+		System.out.println("LOL");
+	}
+}

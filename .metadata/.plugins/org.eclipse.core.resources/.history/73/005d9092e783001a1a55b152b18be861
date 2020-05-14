@@ -1,0 +1,7 @@
+package learn;
+
+public interface hi {
+	public void miaw();
+	public void heuf();
+
+}

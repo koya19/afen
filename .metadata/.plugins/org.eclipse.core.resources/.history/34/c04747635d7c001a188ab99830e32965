@@ -1,0 +1,10 @@
+package learn;
+
+public class A {
+	public static void main(String[] args) {
+		int i = 1, b=0;
+		int a =i /b;
+		System.out.println("coucou toi !");
+		
+	}
+}

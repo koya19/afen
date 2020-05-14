@@ -1,0 +1,10 @@
+package learn;
+
+public class A {
+	public static void main(String[] args) {
+		System.out.println("hello");
+		double i=(double)3/4;
+		System.out.print(i);
+	}
+
+}

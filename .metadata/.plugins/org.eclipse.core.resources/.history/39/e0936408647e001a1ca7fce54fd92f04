@@ -1,0 +1,67 @@
+package AIAC;
+
+
+public class Student  implements Comparable<Student>{
+	protected String firstnameStud;
+	protected String lastnameStud;
+	protected Class c;
+	
+//--------------------------------------------------------------------------------
+	public Student () {
+		firstnameStud= "";
+		firstnameStud="";
+		
+	}
+	
+	public Student (String a, String b) {
+		firstnameStud= a;
+		lastnameStud=b;
+		System.out.println("vous avez creer l'éléve" + this.toString());
+		
+	}
+
+//-------------------------------------------------------------------------------------------
+
+	public String getFirstnameStud() {
+		return firstnameStud;
+	}
+
+	public void setFirstnameStud(String firstnameStud) {
+		this.firstnameStud = firstnameStud;
+	}
+
+	public String getLastnameStud() {
+		return lastnameStud;
+	}
+
+	public void setLastnameStud(String lastnameStud) {
+		this.lastnameStud = lastnameStud;
+	}
+
+	public Class getC() {
+		return c;
+	}
+
+	public void setC(Class c) {
+		this.c = c;
+	}
+	public String toString() {
+		return     lastnameStud + " " +firstnameStud ;
+	}
+	
+//-----------------------------------------------------------------------------------------------
+
+		public int compareTo(Student s)
+	    {         
+	        return this.lastnameStud.compareTo(s.lastnameStud) ;    //Sorts the objects in descending order
+	    }
+		
+		public void addtoClass(Class a) {
+			c=a;
+			a.addStud(this);
+		}
+		
+		public void removeStudClass(Class a) {
+			a.l.remove(a.l.indexOf(this));
+			System.out.println("vous avez retirer "+ this.toString()+"de la classe "+ a.toString());}
+		}

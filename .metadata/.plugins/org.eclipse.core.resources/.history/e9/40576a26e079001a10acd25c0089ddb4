@@ -1,0 +1,37 @@
+package learn;
+
+import java.util.Scanner;
+
+public class A {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("convertisseur/n-------------------------------");
+		char c='y';
+		while(c=='y')
+		{
+			System.out.println("choisir le mode de conversion:\n1-celsius-fahr\n2-fahr-celsius");
+			int r=sc.nextInt();
+			System.out.println("Temperature à convertire");
+			int t=sc.nextInt();
+			if (r==1)
+			{
+				double f=(double)9/5*r+32;
+				System.out.println(r+"°C correspond à: "+f+" F");
+				
+			}
+			else
+			{
+				double f=(double)((r-32)*5/9);
+				System.out.println(r+"F correspond à: "+f+" °C");
+				
+			}
+			sc.nextLine();
+			
+			System.out.println("Souhaitez-vous convertir une autre température?");
+			String l=sc.nextLine();
+			if(l==n)
+			{
+				Systeme.out.println("au revoir");
+			}
+	}
+}

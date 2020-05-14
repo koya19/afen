@@ -1,0 +1,17 @@
+package learn;
+
+
+ public class animal {
+
+	protected String nom;
+	protected int poid;
+	
+	public animal(String n , int p) {
+		nom=n;
+		poid=p;
+	}
+	
+	
+	
+	
+}

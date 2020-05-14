@@ -1,0 +1,10 @@
+package learn;
+
+public abstract class fenin {
+	public void deplasser()
+	{
+		System.out.println("je me déplace en meute");
+	}
+
+
+}

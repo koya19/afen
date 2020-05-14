@@ -1,0 +1,32 @@
+package learn;
+
+public class A {
+	public static void main(String[] args) {
+		/Définition d'un tableau de villes null
+		ville[] tableau = new ville[6];
+		        
+		//Définition d'un tableau de noms de Villes et un autre de nombres d'habitants
+		String[] tab = {"Marseille", "lille", "caen", "lyon", "paris", "nantes"};
+		int[] tab2 = {123456, 78456, 654987, 75832165, 1594, 213};
+		         
+		//Les trois premiers éléments du tableau seront des Villes
+		//et le reste des capitales
+		for(int i = 0; i < 6; i++){
+		  if (i <3){
+		    ville V = new ville(tab[i], "france",tab2[i] );
+		    tableau[i] = V;
+		  }
+		         
+		  else{
+		    Capitale C = new Capitale(tab[i], "france", tab2[i] ,"la tour Eiffel");
+		    tableau[i] = C;
+		  }
+		}
+		                 
+		//Il ne nous reste plus qu'à décrire tout notre tableau !
+		for(Object obj : tableau){
+		  System.out.println(obj.toString()+"\n");
+		}
+
+	}
+}

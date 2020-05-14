@@ -1,0 +1,13 @@
+package learn;
+
+public class solo {
+	private Object a;
+	
+	public solo (Object b) {
+		this.a=b;
+	}
+	
+	public Object geta() {
+		return a;
+	}
+}

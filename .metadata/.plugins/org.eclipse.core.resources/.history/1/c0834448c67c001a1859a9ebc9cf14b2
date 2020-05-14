@@ -1,0 +1,17 @@
+package learn;
+import java.util.Scanner;
+
+public class A {
+	public static void main(String[] args){
+		try {
+		Ville v= new Ville("traaaaaaaaaaaaa",-10);
+		  }
+		catch(exeptionh e) {
+			
+		}
+		catch ( NomvilleExxeption b) {
+			 System.out.println(b.getMessage());
+		}
+		
+	}
+}

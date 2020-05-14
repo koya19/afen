@@ -1,0 +1,26 @@
+package AIAC;
+
+import java.util.Date;
+
+public class Respo extends Personne {
+	protected Filiere filière;
+	
+	public Respo () {
+		super();
+	}
+	public Respo(String lastnamePers, String firstnamePers, String cniPers, char gender,
+			Date date, String lieu) {
+		
+		super(lastnamePers, firstnamePers,cniPers,gender,date,lieu);	
+		System.out.println("vous avez ajoutez   " +this.lastnamePers+" "+this.firstnamePers+"comme responsable" );
+	
+		
+	}
+	public Respo (String a, String b) {
+		super(a,b);	
+		
+		System.out.println("vous êtes   " +this.lastnamePers+" "+this.firstnamePers);
+	
+	}
+
+}

@@ -1,0 +1,55 @@
+package learn;
+
+public class ville {
+	private	String nomVille;
+	private	String nomPays;
+	private	int nbrHabitants;
+	
+	
+	public ville() {
+		System.out.println("Création d'une ville !");
+		nomVille="Inconnu";
+		nomPays="Inconnu";
+		nbrHabitants=0;
+	}
+	
+//---------------------------------------------------
+	public ville(String a, String b, int c) {
+		System.out.println("Création d'une ville !");
+		nomVille=a;
+		nomPays=b;
+		nbrHabitants=c;
+	}
+//---------------------------------------------------
+	public String getnom()
+	{
+		return nomVille;
+	}
+	//---------------------------------------------------
+	
+	public String getpays()
+	{
+		return nomPays;
+	}
+	//---------------------------------------------------
+	
+	public int getnbr()
+	{
+		return nbrHabitants;
+	}
+	//---------------------------------------------------
+	public void setnom(String a)
+	{
+		nomVille = a;
+	}
+	//---------------------------------------------------
+	public void setpays (String b)
+	{
+		nomPays = b;
+	}
+	//---------------------------------------------------
+	public void setnbr(int c)
+	{
+		nbrHabitants = c;
+	}
+}

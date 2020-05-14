@@ -1,0 +1,9 @@
+package learn;
+
+public class A {
+	public static void main(String[] args) {
+		Capitale c = new Capitale();
+		c.decrisToi();
+		
+	}
+}

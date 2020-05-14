@@ -1,0 +1,15 @@
+package learn;
+
+public enum Day {
+	MATIN(8), MIDI(12), APRESMIDI(18), SOIR(20), NUIT(22);
+	
+	private int a;
+	
+	pubic Day(int b) {
+		this a= b;
+	}
+	
+	public int gethour () {
+		return a;
+	}
+}

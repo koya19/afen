@@ -1,0 +1,18 @@
+package AIAC;
+
+public class administrateur {
+protected String profession;
+ public administrateur () {
+	 super();
+	 profession="";
+ }
+ public administrateur(String a,String b,String c) {
+	 super(a,b,c);
+	 profession ="";
+	 
+ }
+ public administrateur(String a,String b,String c,String d) {
+	 super(a,b,c);
+	 profession =d;
+ 
+}

@@ -1,0 +1,12 @@
+package learn;
+import java.util.Scanner;
+
+public class A {
+	public static void main(String[] args){
+		ThreadTest t = new ThreadTest("A");
+		ThreadTest t2 = new ThreadTest("  B");
+		    t.start();
+		    t2.start();
+		
+	}
+}

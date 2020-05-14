@@ -1,0 +1,10 @@
+package learn;
+
+public class A {
+	public static void main(String[] args) {
+		ville v= new ville ();
+		ville v1 = new ville("kota", "bh",3000);
+		System.out.println(v1.nbrHabitants);
+		
+	}
+}

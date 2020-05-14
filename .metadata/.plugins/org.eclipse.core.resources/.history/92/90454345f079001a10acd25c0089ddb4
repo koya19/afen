@@ -1,0 +1,13 @@
+package learn;
+
+import java.util.Scanner;
+
+public class A {
+	public static void main(String[] args) {
+	int tab []= {1,2,3,4};
+	for (int a : tab)
+	{
+		System.out.println(a);
+	}
+}
+}

@@ -1,0 +1,68 @@
+package gestiondenotes;
+import AIAC.Class;
+import AIAC.Prof;
+import AIAC.Student;
+import java.util.*;
+
+public class Element {
+	protected String nomElement;
+	protected Module module;
+	protected Prof prof ;
+	protected Map<Student,Integer> noteElement= new TreeMap<>();
+	
+//-------------------CONSTRUCTEUR--------------------------------------------------	
+	
+	public Element (String nomElement, Module module) {
+		this.nomElement=nomElement;
+		this.module=module;
+		
+		module.eleModule.add(this);
+		System.out.println("creation " +this.toString());
+		 Iterator iterator = module.cl.stud.iterator();
+		 while (iterator.hasNext()){
+	         noteElement.put((Student)iterator.next(),-1);
+		 }
+		
+		
+		
+	}
+//--------------------NOTES---------------------------------------------------------
+	public void modnote(Student student,int note) {
+		if (noteElement.containsKey(student)) {
+		noteElement.put(student,note);
+		}
+		else 
+			System.out.println("cet eleve n'appartient pas à cet class");
+	}
+	
+	public void affichenoteElement() {
+		System.out.println("les notes de l'element " + this.nomElement+" du "+this.module);
+		for (Map.Entry mapentry : noteElement.entrySet()) {
+	           System.out.println(mapentry.getKey() 
+	                              + "   " + mapentry.getValue());
+	        }
+	}
+	
+//--------------------GETTER&SETTER&toString-------------------------------------------------
+	
+	public void setProf (Prof prof) {
+		this.prof=prof;
+		System.out.println("determination de" +prof.toString() +" comme prof de l'element");
+	}
+
+	public Prof getProf() {
+		return prof;
+	}
+
+	public String toString() {
+		return "Element " + nomElement ;
+	}
+	
+
+	
+	
+	
+	
+	
+
+}

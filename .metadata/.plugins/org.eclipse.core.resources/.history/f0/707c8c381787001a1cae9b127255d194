@@ -1,0 +1,50 @@
+package AIAC;
+import java.util.*;
+
+public class Filiere {
+protected String  nomFilière;
+protected List <Promo> f =new ArrayList<>();
+protected List <Class> classFiliere= new ArrayList<>();
+protected Set <Student> studFiliere= new TreeSet<>();
+protected Respo r= new Respo ();
+	
+	
+	public Filiere () {
+		nomFilière = "";
+		System.out.println("vous avez creer une filière indéfinit" );
+	}
+	public Filiere(String a) {
+		nomFilière= a;
+		System.out.println("vous avez créer la filière "+this.toString());
+	}
+//-----------------------------------------------------------------------------
+	@Override
+	public String toString() {
+		return  nomFilière ;
+	}
+//-------------------------------------------------------------------------------
+	public void removePromoFiliere (Promo p) {
+		 f.remove(f.indexOf(p));
+	 }
+	
+	public void afficheClassFiliere() {
+		System.out.println("les  classes du filière "  + this.toString());	
+		for (int i=0;i<classFiliere.size();i++) {			
+			System.out.println( classFiliere.get(i).toString() );
+		}
+ }
+	public void afficheStudFiliere() {
+		 System.out.println("les  étudiants de la filière "  + this.toString());	
+		 Iterator iterator = studFiliere.iterator();
+		 while (iterator.hasNext()){
+	         System.out.println(iterator.next());
+			/*for (int i=0;i<studFiliere.size();i++) {			
+				System.out.println( studFiliere.get(i).toString() );*/
+			}
+	}
+	public void respoFiliere (Respo a) {
+		r=a;
+		System.out.println("vous avez déterminer"+ r +"comme responsable de filière"+this.toString());
+	}
+
+}

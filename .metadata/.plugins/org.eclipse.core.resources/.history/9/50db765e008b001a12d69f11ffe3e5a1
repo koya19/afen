@@ -1,0 +1,25 @@
+package AIAC;
+
+import java.util.Date;
+
+public class administrateur extends Personne{
+
+ public administrateur () {
+	 super();
+
+ }
+ public administrateur (String a, String b) {
+		super(a,b);
+		}
+ public administrateur(String lastnamePers, String firstnamePers, String cniPers, char gender,
+			Date date, String lieu) {
+	 super(lastnamePers, firstnamePers,cniPers,gender,date,lieu);
+	 
+	 System.out.println(this.toString());
+ 
+}
+public String toString() {
+	return "vous êtes " +  lastnamePers +" "+ firstnamePers ;
+}
+}
+ 

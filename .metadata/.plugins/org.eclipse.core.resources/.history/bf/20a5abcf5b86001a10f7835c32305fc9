@@ -1,0 +1,19 @@
+package learn;
+import java.util.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
+
+
+
+public class A {
+	public static void main(String[] args) throws FileNotFoundException{
+	 Path path = Paths.get("C://Users/pc/eclipse-workspace/learn/text.txt");
+	 System.out.println(path.getNameCount());
+	}
+}

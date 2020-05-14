@@ -1,0 +1,23 @@
+package learn;
+
+
+ public class animal implements hi{
+
+	protected String nom;
+	protected int poid;
+	
+	public animal(String n , int p) {
+		nom=n;
+		poid=p;
+	}
+	
+	public void miaw () {
+		System.out.println("MIAW");
+	}
+	public void heuf () {
+		System.out.println("heuf");
+	}
+	
+	
+	
+}

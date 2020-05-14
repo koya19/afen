@@ -1,0 +1,34 @@
+package AIAC;
+
+public class Promo extends Filiere{
+	protected int nPromo;
+	
+	public Promo () {
+		nPromo=0;
+		
+	}
+	public Promo (int a) {
+		nPromo=a;
+	}
+	public Promo(Filiere a,int b) {
+		nPromo=b;
+		this.nomFilière=a.nomFilière;
+		f.add(this);
+		System.out.println("vous avez créér "+this.toString()+" de la filière "+ a.toString());
+	}
+	//------------------------------------------------------------------------
+	
+	public String toString() {
+		return " " + nPromo + " ";
+	}
+	
+	//------------------------------------------------------------------------
+	 public void addPromo(Filiere filiere)
+	 {
+		
+		 filiere.f.add(this);
+		 System.out.println("vous avez ajouter la promotion" + this.nPromo+" au filière "+filiere.toString());
+	 }
+	
+
+}

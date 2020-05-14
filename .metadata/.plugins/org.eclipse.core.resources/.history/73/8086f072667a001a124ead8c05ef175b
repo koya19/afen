@@ -1,0 +1,11 @@
+package learn;
+
+import java.util.Scanner;
+
+public class A {
+	public static void main(String[] args) {
+		String b="hahahah";
+		int a = b.indexOf("h");
+		System.out.println(a);
+	}
+}

@@ -1,0 +1,98 @@
+package gestiondesEtudes;
+
+import java.text.ParseException;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class InscriptionPédagogique {
+		protected int anneePromo;
+		//protected Promotion p;
+		protected int filierechoisie;
+		//protected Student et;
+		protected Ecole ec;
+		protected Class c;
+		protected Filiere f;
+		
+		Scanner sc = new Scanner(System.in);
+		
+		public InscriptionPédagogique(Ecole ec) throws ParseException {
+			this.ec = ec;
+			System.out.println("choisir filière :");
+			ec.affichefiliereEcole();
+			filierechoisie=sc.nextInt();
+			f=ec.choisirFiliere(filierechoisie);
+			System.out.println("Vous vous inscrivez au titre de la :\n 1) Première année\n 2) Deuxième année\n 3) Troisième année");
+			anneePromo = sc.nextInt();
+			sc.nextLine();
+			gestion();
+		}
+		
+		public void firstYear() throws ParseException {
+			if (anneePromo == 1) {
+				InscriptionAdministrative ia = new InscriptionAdministrative(ec);
+				System.out.println("choisir la classe");
+				ec.choisirFiliere(filierechoisie).choisirClassFilere().addStud(ia.e);
+				ia.e.anneePromo=1;
+				}
+			}
+		
+		
+		public void secondYear() {
+			
+			c=ec.choisirFiliere(filierechoisie).choisirClassFilere();
+			System.out.println("choisir votre nom");
+			c.affichestudClass();
+			int studchoisie=sc.nextInt();
+						if (ec.choisirFiliere(filierechoisie).choisirClassFilere().choisirStud(studchoisie).getDecision().equalsIgnoreCase("Passage")) {
+							ec.choisirFiliere(filierechoisie).choisirClassFilere().choisirStud(studchoisie).setAnneePromo(2);	
+							ec.choisirFiliere(filierechoisie).choisirClassFilere().stud.remove(ec.choisirFiliere(filierechoisie).choisirClassFilere().choisirStud(studchoisie));
+								System.out.println("Félicitations, vos notes et discipline vous ont permis de réussir. \nBienvenu dans cette nouvelle année !");
+								System.out.println("\n----------------------\n");
+								
+								System.out.println("choisir la nouvelle promotion");
+								ec.choisirFiliere(filierechoisie).afficheClassFiliere();
+								ec.choisirFiliere(filierechoisie).choisirClassFilere().addStud(ec.choisirFiliere(filierechoisie).choisirClassFilere().choisirStud(studchoisie));
+								System.out.println("\n----------------------\n");
+								
+						}
+						else {
+								System.out.println("Désolé, vous allez redoubler. Bon courage !");
+						}
+					
+				}				
+	
+				
+		
+		
+		public void thirdYear() {
+			c=ec.choisirFiliere(filierechoisie).choisirClassFilere();
+			System.out.println("choisir votre nom");
+			c.affichestudClass();
+			int studchoisie=sc.nextInt();
+						if (ec.choisirFiliere(filierechoisie).choisirClassFilere().choisirStud(studchoisie).getDecision().equalsIgnoreCase("Passage")) {
+							ec.choisirFiliere(filierechoisie).choisirClassFilere().choisirStud(studchoisie).setAnneePromo(3);	
+							ec.choisirFiliere(filierechoisie).choisirClassFilere().stud.remove(ec.choisirFiliere(filierechoisie).choisirClassFilere().choisirStud(studchoisie));
+								System.out.println("Félicitations, vos notes et discipline vous ont permis de réussir. \nBienvenu dans cette nouvelle année !");
+								System.out.println("\n----------------------\n");
+								
+								System.out.println("choisir la nouvelle promotion");
+								ec.choisirFiliere(filierechoisie).afficheClassFiliere();
+								ec.choisirFiliere(filierechoisie).choisirClassFilere().addStud(ec.choisirFiliere(filierechoisie).choisirClassFilere().choisirStud(studchoisie));
+								System.out.println("\n----------------------\n");
+								
+						}
+						else {
+								System.out.println("Désolé, vous allez redoubler. Bon courage !");
+						}
+		}
+		
+		public void gestion() throws ParseException {
+			switch (anneePromo) {
+			case 1 : firstYear(); break;
+			case 2 : secondYear(); break;
+			case 3 : thirdYear(); break;
+			default : System.out.println("Réessayer"); anneePromo = sc.nextInt(); gestion(); break;
+			}
+		}
+	
+}

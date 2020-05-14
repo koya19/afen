@@ -1,0 +1,14 @@
+package learn;
+
+public class Ville  {
+	
+	protected String Nom;
+	protected int nbrH;
+	
+	public Ville(String a, int b)throws exeptionh
+	{
+		Nom=a;
+		if (b<=0) throw new exeptionh();
+		else nbrH=b;
+	}
+}

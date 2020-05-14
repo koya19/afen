@@ -1,0 +1,22 @@
+package learn;
+
+
+ public class animal {
+
+	protected String nom;
+	protected int poid;
+	
+	public animal(String n , int p) {
+		nom=n;
+		poid=p;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("animal [nom= #%s, poid= %d]",nom,poid);
+	}
+	
+	
+	
+	
+}

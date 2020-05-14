@@ -1,0 +1,6 @@
+package gestiondesEtudes;
+
+public   interface Inscription {
+	public void inscription() ;
+
+}

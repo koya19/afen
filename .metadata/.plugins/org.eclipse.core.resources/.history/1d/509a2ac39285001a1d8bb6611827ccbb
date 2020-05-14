@@ -1,0 +1,13 @@
+package learn;
+import java.util.*;
+import java.lang.Enum;
+
+
+
+public class A {
+	public static void main(String[] args){
+		
+		solo n= new solo("hii");
+		System.out.println(n.geta());
+			}
+}

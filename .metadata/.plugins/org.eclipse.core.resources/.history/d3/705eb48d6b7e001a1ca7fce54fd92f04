@@ -1,0 +1,47 @@
+package AIAC;
+import java.util.*;
+
+public class Promo {
+	protected int nPromo;
+	protected List <Class> p= new ArrayList<>();
+	
+	public Promo () {
+		nPromo=0;
+		
+	}
+	public Promo (int a) {
+		nPromo=a;
+		System.out.println("vous avez créér la promotion"+this.toString());
+	}
+	public Promo(Filiere filiere,int b) {
+		nPromo=b;
+		
+		filiere.f.add(this);
+		System.out.println("vous avez créér promotion"+this.toString()+"de la filière "+filiere.toString());
+		
+	}
+	//------------------------------------------------------------------------
+	
+	public String toString() {
+		return " " + nPromo + " ";
+	}
+	
+	//------------------------------------------------------------------------
+	 public void addPromo(Filiere filiere)
+	 {
+		
+		 filiere.f.add(this);
+		 System.out.println("vous avez ajouter la promotion" + this.nPromo+" au filière "+filiere.toString());
+	 }
+	 public void removePromoFiliere (Filiere filiere) {
+		 filiere.f.remove(filiere.f.indexOf(this));
+	 }
+	
+	 public void afficheClassPromo() {
+			System.out.println("les  classes de la promotion "  + this.toString());	
+			for (int i=0;i<c.size();i++) {			
+				System.out.println( c.get(i).toString() );
+			}
+	 }
+
+}

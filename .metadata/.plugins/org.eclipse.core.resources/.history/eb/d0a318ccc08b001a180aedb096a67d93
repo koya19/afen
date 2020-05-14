@@ -1,0 +1,310 @@
+package AIAC;
+import gestiondenotes.Module; 
+import gestiondenotes.EDT;
+import gestiondenotes.Element;
+import java.util.*;
+import java.text.*;
+import java.time.LocalDateTime;
+import java.text.*;
+
+public class project {
+	public static void main(String[] args) throws ParseException {
+		Scanner sc= new Scanner(System.in);
+		/*
+		System.out.println("**************************BIENVENUE DANS LE SYSTEM****************************" );
+		
+		System.out.println("enter le nom de l'école");
+		String nomEcole=sc.nextLine();
+		System.out.println("enter l'abreveation de l'école");
+		String abrEcole=sc.nextLine();
+		System.out.println("enter le fondateur de l'école");
+		String fondateur=sc.nextLine();
+		System.out.println("enter le type de l'école");
+		String type=sc.nextLine();
+		System.out.println("enter l'adresse de l'école");
+		String adressEcole=sc.nextLine();
+		
+		Ecole ecole=new Ecole(nomEcole, abrEcole,fondateur,type,adressEcole);
+		System.out.println("**************************BIENVENUE DANS LE SYSTEM "+ecole.abrEcole+"****************************" );
+	 	System.out.println(ecole.toString());*/
+		Ecole ecole= new Ecole();
+		
+	 	String Newligne=System.getProperty("line.separator");
+	 	int id= 0;
+	 	
+	 	 while (id==0) {
+	 		System.out.println("vous étes:"+Newligne+Newligne+"1-Administrateur"+Newligne+"2-Responsable de filière"+Newligne+"3-Enseignant"+Newligne+"4-Etudiant"+Newligne+"5-Visiteur");
+		 	id=sc.nextInt();
+		 	sc.nextLine();
+		 	System.out.println(Newligne);
+			System.out.println("Entrez votre Nom ");
+			String nom =sc.nextLine();
+			System.out.println("Entrez votre et Prénom");
+			String prenom =sc.nextLine();
+		
+			
+			if(id==1) {
+				System.out.println("Entrez le mot de passe");
+				String pwd=sc.nextLine();
+				if (pwd.equals("adminAIAC")) {
+					Personne pers= new administrateur(nom,prenom);	
+					System.out.println("vous êtes connecté en tant qu'administrateur");
+					System.out.println(Newligne);
+					int ad1=0;
+					while (ad1==0) {
+						System.out.println("Choisir votre prochaine action:"+Newligne+Newligne+"1-Géstion des études"+Newligne+"2-Géstion de scolarité"+Newligne+"3-Les statistiques et rapports "+Newligne+"4-Retour"+Newligne);
+						ad1=sc.nextInt();
+						sc.nextLine();
+						if (ad1==1) {
+							int ad2=0;
+							while (ad2==0) {
+								System.out.println("Choisir votre prochaine action:"+Newligne+Newligne+"1-Créer une filière"+Newligne+"2-Créer une promotion"+Newligne+"3-ajout d'un responsable de filière "+Newligne+"4-Créer une classe"+Newligne+"5-Retour");
+								 ad2= sc.nextInt();
+								sc.nextLine();
+								if (ad2==1) {
+									System.out.println("Veuillez saisir le nom de la nouvelle filière");
+									String nomFiliere=sc.nextLine();
+									Filiere f = new Filiere(nomFiliere,ecole);
+									ad2=0;
+									
+									}
+								if (ad2==2) {
+									System.out.println("Veuillez Saisir la filière dans laquel vous voulez ajouter la promotion");
+									ecole.affichefiliereEcole();
+									int filierechoisie=sc.nextInt();
+									int i=1;
+									Filiere filiere=new Filiere();
+									for(Filiere f: ecole.filiereEcole) {
+										if(i==filierechoisie) {
+											filiere=f;
+											break;
+										}
+										else i++;
+										}
+									System.out.println("Veuillez saisir l'année de la promotion");
+									int année=sc.nextInt();
+									Promo promotion=new Promo(filiere,année);
+									ad2=0;
+												
+								}
+								if (ad2==3) {
+									System.out.println("Veuillez saisir le nom ");
+									String nomRespo=sc.nextLine();
+									System.out.println("Veuillez saisir le prénom");
+									String prenomRespo=sc.nextLine();
+									Respo responsable=new Respo(nomRespo,prenomRespo);
+									System.out.println("affecte le responsable à une filière:");
+									ecole.affichefiliereEcole();
+									int filiere=sc.nextInt();
+									int i=1;
+									for(Filiere f: ecole.filiereEcole) {
+										if(i==filiere) {
+											f.respoFiliere (responsable);
+											break;
+										}
+										else i++;
+										}
+									ad2=0;
+								 }
+								if (ad2==4)
+								{
+									System.out.println("Veuillez choisir la filière");
+									ecole.affichefiliereEcole();
+									int filierechoisie=sc.nextInt();
+									int i=1;
+									Filiere filiere = new Filiere();
+									for(Filiere f: ecole.filiereEcole) {
+										if(i==filierechoisie) {
+											filiere=f;
+											break;
+										}
+										else i++;
+										}
+									System.out.println("Veuillez choisir la promotion disponible pour la filiere");
+									filiere.affichePromoFiliere();
+									int promochoisie=sc.nextInt();
+									Promo promotion = new Promo();
+									i=1;
+									for(Promo promo: filiere.promoFiliere) {
+										if(i==promochoisie) {
+											promotion=promo;
+											break;
+										}
+										else i++;
+										}
+									Class c=new Class(filiere,promotion);
+								}
+									
+								if(ad2==5) {
+									ad1=0;
+								}
+									
+									
+							}
+								
+							}
+							
+						}
+					}
+										
+				
+					
+			
+				else {
+					System.out.println("le mot de passe est incorrecte");
+					id=0;
+				}
+			}
+			else if(id==2){
+				System.out.println("Entrez le mot de passe");
+				String pwd=sc.nextLine();
+				if (pwd.equals("respoAIAC")) {
+					Personne pers= new administrateur(nom,prenom);
+				}
+				else id=0;
+			}
+				
+			else if(id==3) {
+				System.out.println("Entrez le mot de passe");
+				String pwd=sc.nextLine();
+				if (pwd=="profAIAC") {
+					Personne pers= new Prof(nom,prenom);
+				}
+				else id=0;
+			}
+			
+			else if(id==4) {
+				
+				System.out.println("Entrez le mot de passe");
+				String pwd=sc.nextLine();
+				if (pwd=="profAIAC") {
+					Personne pers= new Student(nom,prenom);
+				}
+				else id=0;
+			}
+			else if (id==5) {
+				Personne pers=new Visiteur(nom,prenom);
+			}
+	 	 }
+	}
+}
+	
+	 	 
+	 	
+		
+	 	
+		/*
+		Filiere f1= new Filiere("GI",e);
+		Filiere f2=new Filiere("GEET",e);
+		Filiere f3 = new Filiere ("ICNA",e);
+		Filiere f4=new Filiere ("IESCA",e);
+		
+		Promo p2= new Promo(15);
+		Promo p1=new Promo(16);
+		
+		Class c2=new Class(f1,p2);
+		Class c3= new Class (f2,p1);
+		Class c4=new Class (f2,p2);
+		Class c5=new Class (f3,p1);
+		Class c6=new Class (f4,p1);
+		Class c= new Class(f1,p1);
+		
+		Student S1=new Student ("Rhif","afaf");
+		Student S2=new Student ("LAHBIL","MOHAMMED");
+		Student S3=new Student ("ZIAD","RASSMI");
+		Student S4=new Student ("LAAROUSSI","HAMZA");
+		Student S5=new Student ("APAA","BOUIHI");
+		Student S6=new Student ("BElEhOU","JIHANE");
+		Student S7=new Student ("LAHLOU","HAMZA");
+		Student S8=new Student ("ABADI","aCHRAF");
+		Student S9=new Student ("BANI","HACHIM");
+		Student S10=new Student("Slalmi","IBTISSAM");
+		
+		c.addStud(S1);
+		c.addStud(S2);
+		c.addStud(S5);
+		c2.addStud(S7);
+		c2.addStud(S8);
+		c3.addStud(S4);
+		c4.addStud(S9);
+		c5.addStud(S6);
+		c6.addStud(S3);
+		c.addStud(S10);
+		
+		
+		c.affichestudClass();
+		//p1.afficheStudPromo();
+		f1.afficheStudFiliere();
+		Module m= new Module("Programmation",c);
+		c.affichermoduleClass();
+		Element elem=new Element ("java",m);
+		Prof prof = new Prof ("lolo"); 
+		
+		m.affichEleModule();
+		c.affichemodClass();
+		System.out.println(""
+				+ ""
+				+ ""
+				+ " ");
+		
+		elem.modnote(S1, 20);
+		elem.modnote(S2, 12);
+		elem.modnote(S5, 13);
+		elem.modnote(S10,14);
+		elem.modnote(S3, 10);
+	
+		elem.affichenoteElement();
+		
+		elem.afficherhours();	
+		elem.modhours();
+		elem.afficherhours();
+		
+		System.out.println("   " );
+		System.out.println("   " );
+		
+		elem.addprof("TP", prof);
+		elem.afficheprof();
+		
+		
+		
+		//EDT edt= new EDT("20 10 1999");
+		
+		/*
+		Scanner sc=new Scanner(System.in);
+		Date d = new Date();
+		SimpleDateFormat sdf= new SimpleDateFormat("EEE dd MMMM yyyy");
+		SimpleDateFormat s= new SimpleDateFormat("dd MM yyyy");
+	    System.out.println("entrer la date sous forme dd MM YYYY");
+		String a = sc.nextLine();
+		d=s.parse(a);
+		System.out.println(sdf.format(d));
+		d.setDate(d.getDate()+1);
+		System.out.println(sdf.format(d));
+		System.out.println("hi");*/
+		
+	
+		/*
+		SimpleDateFormat sdf= new SimpleDateFormat("EEE dd MMMM yyyy");
+		
+		System.out.println("");
+		
+		EDT edt=new EDT("20 10 1999");
+		//edt.afficheEDT();
+		edt.addElement(0, 1, elem,"TP");
+		edt.afficheEDT();
+		System.out.println(edt.getDiscipline());
+	*/
+		
+		
+		
+	
+	
+		
+		
+		
+		
+		
+		
+		
+		
+

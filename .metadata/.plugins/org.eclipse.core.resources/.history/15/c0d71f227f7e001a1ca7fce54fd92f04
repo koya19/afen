@@ -1,0 +1,26 @@
+package AIAC;
+
+public abstract class Personne {
+	protected String lastnamePers;
+	protected String firstnamePers;
+	//date de naissance
+	//lieu de naissance
+	protected String cni;
+	
+	public Personne() {
+		lastnamePers="";
+		firstnamePers="";
+		cni="";
+	}
+	public Personne(String a, String b) {
+		lastnamePers=a;
+		firstnamePers=b;
+	}
+	public Personne(String a, String b,String c) {
+		lastnamePers=a;
+		firstnamePers=b;
+		cni=c;
+	}
+	
+
+}

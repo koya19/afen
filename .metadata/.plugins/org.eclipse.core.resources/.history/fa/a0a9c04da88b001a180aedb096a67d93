@@ -1,0 +1,27 @@
+package AIAC;
+
+import java.util.Date;
+
+public class Respo extends Personne {
+	protected final String profession="Responsable de filière";
+	protected Filiere filière;
+	
+	public Respo () {
+		super();
+	}
+	public Respo(String lastnamePers, String firstnamePers, String cniPers, char gender,
+			Date date, String lieu) {
+		
+		super(lastnamePers, firstnamePers,cniPers,gender,date,lieu);	
+		System.out.println("vous avez ajoutez   " +super.toString() +", un"+ profession );
+	
+		
+	}
+	public Respo (String a, String b) {
+		super(a,b);	
+		
+		System.out.println("vous êtes   " +super.toString() +", un"+ profession + " "+filière.toString() );
+	
+	}
+
+}

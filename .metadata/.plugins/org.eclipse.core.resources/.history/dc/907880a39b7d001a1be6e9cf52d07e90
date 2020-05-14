@@ -1,0 +1,17 @@
+package AIAC;
+
+
+
+import java.util.*;
+
+public class project {
+	public static void main(String[] args) {
+		Set<Integer> List = new HashSet<>();
+		List.add(12);
+		List.add(12);
+		List.add(1);
+		for (int i:List)
+			System.out.println(i);
+}
+
+}

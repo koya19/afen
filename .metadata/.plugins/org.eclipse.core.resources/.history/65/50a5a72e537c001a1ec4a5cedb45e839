@@ -1,0 +1,92 @@
+package learn;
+
+public class ville {
+	protected	String nomVille;
+	protected	String nomPays;
+	protected	int nbrHabitants;
+	protected char categorie; 
+	
+	
+	public ville() {
+		System.out.println("Création d'une ville !");
+		nomVille="Inconnu";
+		nomPays="Inconnu";
+		nbrHabitants=0;
+	}
+	
+//---------------------------------------------------
+	public ville(String a, String b, int c) {
+		System.out.println("Création d'une ville !");
+		nomVille=a;
+		nomPays=b;
+		nbrHabitants=c;
+	}
+//---------------------------------------------------
+	public String getnom()
+	{
+		return nomVille;
+	}
+	//---------------------------------------------------
+	
+	public String getpays()
+	{
+		return nomPays;
+	}
+	//---------------------------------------------------
+	
+	public int getnbr()
+	{
+		return nbrHabitants;
+	}
+	//---------------------------------------------------
+	public void setnom(String a)
+	{
+		nomVille = a;
+	}
+	//---------------------------------------------------
+	public void setpays (String b)
+	{
+		nomPays = b;
+	}
+	//---------------------------------------------------
+	public void setnbr(int c)
+	{
+		nbrHabitants = c;
+	}
+	
+//-----------------------------------------------------------
+	public char setcategorie ()
+	{
+		char tab1[]= {'A','B','C','D'};
+		int tab2 []= {1,10,100,1000};
+		int i= 0;
+		while(i< tab2.length && tab2[i]<this.categorie )
+		{
+			i++;
+		}
+		return tab1[i];
+	}
+//-----------------------------------------------------------
+	 public String decrisToi(){
+		    return "\t"+this.nomVille+" est une ville de "+this.nomPays+ ", elle comporte : "+this.nbrHabitants+" habitant(s) => elle est donc de catégorie : "+this.categorie;
+		  }
+//-----------------------------------------------------------
+
+		  public String comparer(ville v1){
+		    String str = new String();
+
+		    if (v1.getnbr() > this.nbrHabitants)
+		      str = v1.getnom()+" est une ville plus peuplée que "+this.nomVille;
+		     
+		    else
+		      str = this.nomVille+" est une ville plus peuplée que "+v1.getnom();
+		     
+		    return str;
+		  }
+//----------------------------------------------------------
+		  public String toString(){
+			  return "\t"+this.nomVille+" est une ville de "+this.nomPays+", elle comporte : "+this.nbrHabitants+" => elle est donc de catégorie : "+this.categorie;
+			  }
+		
+	
+}

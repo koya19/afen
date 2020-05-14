@@ -1,0 +1,13 @@
+package learn;
+
+
+public class A {
+	public static void main(String[] args) {
+
+		int i=4;
+		String j= new String();
+		j=j.copyValueOf(i);
+		System.out.print(i);
+	}
+
+}

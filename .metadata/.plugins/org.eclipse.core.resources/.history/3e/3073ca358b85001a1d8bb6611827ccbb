@@ -1,0 +1,13 @@
+package learn;
+import java.util.*;
+import java.lang.Enum;
+
+
+
+public class A {
+	public static void main(String[] args){
+		
+		Day moment= Day.MATIN;
+		System.out.println(moment);
+			}
+}

@@ -1,0 +1,15 @@
+package AIAC;
+
+public class Promo extends Filiere{
+	protected int nPromo;
+	
+	public Promo () {
+		nPromo=0;
+		
+	}
+	public Promo(int a) {
+		nPromo=a;
+	}
+	
+
+}

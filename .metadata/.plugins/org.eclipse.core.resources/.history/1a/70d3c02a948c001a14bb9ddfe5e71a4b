@@ -1,0 +1,116 @@
+package AIAC;
+import java.util.*;
+import gestiondenotes.Module;
+
+
+
+public class Class  implements Comparable<Class>  {
+	
+	protected Promo promo;
+	protected Filiere filiere;
+	public Set <Student> stud =new TreeSet <>();
+	public List <Module> moduleClass=new ArrayList<>();
+//-----------------------------------------------------------------------------------------	
+	public Class() {
+		System.out.println("vous avez creer la classe indéfinit" );
+	}
+	public Class(Filiere filiere,Promo promo) {
+		this.filiere=filiere ;
+		this.promo=promo ;
+		promo.classPromo.add(this);
+		filiere.classFiliere.add(this);
+		
+		
+		
+		System.out.println("vous avez creer la classe " + this.toString() );
+	}
+//-----------------------------------------------------------------------------------------
+	
+//-----------------------------------------------------------------------------------------	
+	
+	public void addStud(Student s) {
+			if (stud.contains(s))
+				System.out.println(" l'étudiant "+ s.lastnamePers+" "+ s.firstnamePers + " existe déja dans la classe "+ filiere.nomFilière+" "+promo.nPromo);
+			else
+				stud.add(s);
+				promo.studPromo.add(s);
+				filiere.studFiliere.add(s);
+				
+				
+				//Collections.sort(l);
+				System.out.println("vous avez ajouter l'étudiant "+s.lastnamePers+" "+  s.firstnamePers +" "+ " à la classe "+ filiere.nomFilière+" "+promo.nPromo);
+
+	}
+	
+	public String toString() {
+		return  filiere.nomFilière+" "+promo.nPromo ;
+	}
+	
+	public void affichestudClass() {
+		
+		 Iterator iterator = stud.iterator();
+		 System.out.println("les éléves de la classe "  + this.toString());	
+		 while (iterator.hasNext()){
+	         System.out.println(iterator.next());
+		
+		}
+		
+	}
+	public void affichemodClass() {
+		
+		System.out.println("les modules de cette clas sont : ");
+		 for (Module module: moduleClass) {
+			 System.out.println(module.toString());
+		 }
+		
+	}
+	
+	public void removeStudClass(Student s) {
+		
+		
+		stud.remove(s);
+		System.out.println("vous avez retirer "+ s.toString()+"de la classe "+ this.toString());
+	}
+	public void afficherespoClass() {
+		filiere.r.toString();
+		System.out.println("le responsable de la classe "+ this.toString()+" est "+ filiere.r.toString());
+	}
+	
+
+	
+	public void affichermoduleClass() {
+		for(Module n : moduleClass)
+			   System.out.println(n.toString());
+		 }
+	
+	
+	public int compareTo(Class c) {
+		
+		 return this.filiere.nomFilière.compareTo(c.filiere.nomFilière) ;
+	}
+	
+	
+//----------------------------------------------------------------------------------------------------------------
+	public Promo getPromo() {
+		return promo;
+	}
+	public void setPromo(Promo promo) {
+		this.promo = promo;
+	}
+	public Filiere getFiliere() {
+		return filiere;
+	}
+	public void setFiliere(Filiere filiere) {
+		this.filiere = filiere;
+	}
+	public Set<Student> getStud() {
+		return stud;
+	}
+	public void setStud(Set<Student> stud) {
+		this.stud = stud;
+	}
+	
+	
+	
+	
+}

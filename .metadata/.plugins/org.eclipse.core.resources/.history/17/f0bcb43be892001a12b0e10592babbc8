@@ -1,0 +1,45 @@
+package lolo;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Scanner;
+
+public class test {
+
+	public static void main(String[] args) throws EXC,IllegalArgumentException, IOException {
+		
+		File f=new File("C:/Users/pc/Desktop/test1.txt");
+		try (BufferedWriter br= new BufferedWriter(new FileWriter(f))){
+		br.write("hak i ");
+		
+		br.write("love ");
+		
+		br.write("choclate ");
+		
+		br.write("22");
+		}
+		try(BufferedReader bw= new BufferedReader(new FileReader(f))){
+		bw.read();
+		String h = bw.readLine();
+		System.out.println(h.substring(18, 21));
+		}
+		
+			
+	
+		
+		catch(IOException e) {
+			e.printStackTrace();
+			 
+		}
+		
+		
+	}
+
+}

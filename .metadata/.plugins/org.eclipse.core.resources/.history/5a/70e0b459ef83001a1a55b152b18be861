@@ -1,0 +1,13 @@
+package learn;
+
+public class chien extends canin{
+	public chien(String string, int i) {
+super(string, i);
+	}
+
+	public void crier()
+	{
+		System.out.println("dogeu");
+	}
+
+}

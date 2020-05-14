@@ -1,0 +1,10 @@
+package learn;
+
+public class Capitale extends ville
+{
+	public Capitale() {
+		this.nomVille="toto";
+	}
+	
+
+}

@@ -1,0 +1,15 @@
+package AIAC;
+
+public class Promo {
+	protected String nomPromo;
+	
+	public Promo () {
+		nomPromo="";
+		
+	}
+	public Promo(String a) {
+		nomPromo=a;
+	}
+	
+
+}

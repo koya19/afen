@@ -1,0 +1,15 @@
+package lolo;
+
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Scanner;
+
+public class test {
+
+	public static void main(String[] args) throws EXC,IllegalArgumentException {
+		Path p= Paths.get("C:\\Users\\pc\\Desktop\\J");
+		System.out.println(p);
+		
+	}
+
+}

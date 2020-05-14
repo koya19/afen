@@ -1,0 +1,331 @@
+package gestiondesEtudes;
+
+import java.text.ParseException;
+import java.util.InputMismatchException;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Project {
+
+	public static void main(String[] args) throws ParseException   {
+		Scanner sc= new Scanner(System.in);
+		String Newligne=System.getProperty("line.separator");
+		
+		System.out.println("************************** BIENVENUE DANS LE SYSTEM ****************************" );
+		System.out.println("**************************       Mr.directeur         ****************************\n\n" );
+		System.out.println("-Entrez le nom de l'école");
+		String nomEcole=sc.nextLine();
+		System.out.println("-Entrez l'abreveation de l'école");
+		String abrEcole=sc.nextLine();
+		System.out.println("-Entrez le fondateur de l'école");
+		String fondateur=sc.nextLine();
+		System.out.println("-Entrez le type de l'école");
+		String type=sc.nextLine();
+		System.out.println("-Entrez l'adresse de l'école");
+		String adressEcole=sc.nextLine();
+		Ecole ecole=new Ecole(nomEcole, abrEcole,fondateur,type,adressEcole);
+		System.out.println("--Veuillez entrer vos données personelles");
+		ecole.inscription();
+		ecole.addfilière();
+		ecole.addclass();
+		System.out.println("\n la phase de la création l'école est terminée avec succès\n ");
+		System.out.println("**************************BIENVENUE DANS LE SYSTEM "+ecole.abrEcole+"****************************\n\n" );
+		int id=0;
+		while (id==0) {//connection while(id==0)
+			int e=0;
+			while(e==0) {
+				System.out.println("--Se connecter comme étant:\n  1-Administrateur\n  2-Responsable de filière\n  3-Enseignant\n  4-Etudiant\n  5-Visiteur");
+		 		try {//try 1
+					id=sc.nextInt();	
+					if (id!=1 && id!=2 && id!=3 && id!=4 && id!=5) {
+						throw new InputMismatchException("Ce choix est invalide");
+						}
+					sc.nextLine();
+					break;
+				}//try 1
+				catch(InputMismatchException er) {//catch 1
+					System.out.println();
+					System.err.println("Ce choix est invalide");
+					sc.nextLine();
+					e=0;
+				}//catch 1
+		 		
+			}
+			
+			System.out.println(" ->Entrez votre Nom ");
+			String nom =sc.nextLine();
+			System.out.println(" ->Entrez votre et Prénom");
+			String prenom =sc.nextLine();
+	 		System.out.println(" ->Entrez votre mot de passe");
+	 		String pwd =sc.nextLine();
+	 	
+			if(id==1) {//connection admin
+				administrateur admin=new administrateur(nom,prenom,pwd,ecole);
+				if (admin.exist(ecole.adminEcole)==false) {//check l'existence du admin
+					System.out.println("vous n'étes pas membre de l'administration\n");
+					id=0;
+				}//check l'existence du admin
+				else if (admin.verificationPWD()==false) {//check pwd
+					System.out.println("le mot de passe est incorrecte.");
+					id=0;
+				}//check pwd
+				else {// passwd et l'existence verifié admin
+					int ad1=0;
+					while (ad1==0) {//menu d'administrateur
+						System.out.println("--Choisir votre prochaine action:\n\n    1-Géstion des études\n    2-Géstion de scolarité\n    3-Les statistiques et rapports\n    4-Retour\n");
+						try {//try 1
+							ad1=sc.nextInt();	
+							if (ad1!=1 && ad1!=2 && ad1!=3 && ad1!=4) {
+								throw new InputMismatchException("Ce choix est invalide");
+								}
+						}//try 1
+						catch(InputMismatchException er) {//catch 1
+							System.out.println();
+							System.err.println("Ce choix est invalide");
+							sc.nextLine();
+							ad1=0;
+						}//catch 1
+						if(ad1==1) {//gestion des etudes
+							int ad2=0;
+							while (ad2==0) {//menu gestion des etudes
+								System.out.println("--Choisir votre prochaine action:\n    1-Ajouter un Administrateur\n    2-Ajouter une filière\n    3-Ajouter une classe\n    4-Retirer une filière\n    5-Retirer une classe\n    6-Retirer un administrateur\n    7-Changer le responsable d'une filière\n    8-Retour\n");
+								try {//try 2
+									ad2=sc.nextInt();	
+									if (ad2!=1 && ad2!=2 && ad2!=3 && ad2!=4 && ad2!=5 && ad2!=6 && ad2!=7 && ad2!=8) {
+										throw new InputMismatchException("Ce choix est invalide");
+										}
+								}//try 2
+								catch(InputMismatchException er) {//catch 2
+									System.out.println();
+									System.err.println("Ce choix est invalide");
+									sc.nextLine();
+									ad2=0;
+								}//catch2
+								if(ad2==1) {//ajouter un admin
+									ecole.inscription();
+									ad2=0;
+								}//ajouter un admin
+								if(ad2==2) {//ajouter une filière
+									ecole.addfilière();
+									ad2=0;
+								}//ajouter une filière
+								if(ad2==3) {//ajout d'une class
+									ecole.addclass();
+									ad2=0;
+								}//ajout d'une class
+								if(ad2==4) {//retirer une filière
+									ecole.removeFilière();
+									ad2=0;
+								}//retirer une filière
+								if(ad2==5) {//retirer une classe
+									ecole.removeClass();
+									ad2=0;
+								}//retirer une classe
+								if(ad2==6) {//retirer un admin
+									ecole.removeAdmin();
+									ad2=0;
+								}//retirer un admin
+								if(ad2==7) {//changer un respp
+									ecole.modResp();
+									ad2=0;
+								}//changer un respp
+								if (ad2==8) {//retour2
+									ad1=0;	
+									
+								}//retour2	
+							}//menu gestion des etudes
+						}//gestion des etudes
+						
+						if(ad1==2) {//gestion de scolarité
+							
+							ad1=0;
+						}//gestion de scolarité
+						if(ad1==3) {//les statistique et rapports
+							int ad2=0;
+							while (ad2==0) {//menu les statistique et rapports
+								System.out.println("--Choisir votre prochaine action:\n\n    1-Statistiques et rapport sur les études\n    2-Statistiques et rapport sur la scolarité\n    3-Statistiques et rapport sur les exams\n    4-Retour\n");
+								try {//try 2
+									ad2=sc.nextInt();	
+									if (ad2!=1 && ad2!=2 && ad2!=3 && ad2!=4) {
+										throw new InputMismatchException("Ce choix est invalide");
+										}
+								}//try 2
+								catch(InputMismatchException er) {//catch 2
+									System.out.println();
+									System.err.println("Ce choix est invalide");
+									sc.nextLine();
+									ad2=0;
+									
+								}//catch2
+								if (ad2==1) {//stat sur les etudes
+									while(ad2==1){//menu statist d'etudes
+										System.out.println("Choisir votre prochaine action:\n    1-Afficher les filières de l'école\n    2-Afficher les classes d'une filière\n    3-Afficher les heures des modules pour chaque fillière\n    4-Afficher les emploies du temps\n    5-Retour\n");
+										try {//try 2
+											ad2=sc.nextInt();	
+											if (ad2!=1 && ad2!=2 && ad2!=3 && ad2!=4 && ad2!=5) {
+												throw new InputMismatchException("Ce choix est invalide");
+												}
+										}//try 2
+										catch(InputMismatchException er) {//catch 2
+											System.out.println();
+											System.err.println("Ce choix est invalide");
+											sc.nextLine();
+											ad2=0;
+											
+										}//catch2
+										if(ad2==1) {//aficher les fillière
+											ecole.affichefiliereEcole();
+											ad2=1;
+										}//aficher les fillière
+										if(ad2==2) {//afficher les classes
+											ecole.afficheclassFiliere();
+											ad2=1;
+										}//afficher les classes
+										if(ad2==3) {//afficher les heures du modules
+											ecole.afficherheurModule();
+											ad2=1;
+										}//afficher les heures du modules
+										if(ad2==4) {//afficher les EDT
+											ecole.afficherEDT();
+											ad2=1;
+										}//afficher les EDT
+										if(ad2==5) {
+											ad2=0;
+										}
+									}//menu statist d'etudes
+								}//stat sur les etudes
+								if(ad2==2) {//stat sur la scolarité
+									
+								}//stat sur la scolarité
+								if(ad2==3) {//stat sur les examen
+									
+								}//stat sur les examen
+								if(ad2==4) {//retour2
+									ad1=0;
+								}//retour2
+							}//menu les statistique et rapports
+						}//les statistique et rapports
+						if(ad1==4) {//retour1
+							System.out.println("Merci pour votre visite.");
+							id=0;
+						}//retour1
+					
+					}//menu d'administrateur
+					
+				}// passwd et l'existence verifié admin
+			
+				
+				
+				
+				
+			}////connection admin
+	////---------------------------------------------Responsable de filière----------------------------------------
+			if(id==2) {//connection responsable de filière
+				if (ecole.respoEcole.isEmpty()==true) {
+					System.out.println("Pas de responsable pour le moment.");
+					id=0;
+				}
+				else {
+					Filiere f=new Filiere ();
+					ecole.connectionRespo(nom, prenom, pwd,f);
+					
+				}
+				
+				/*
+				if(ecole.respoEcole.isEmpty()) {//existence des responsable
+					System.out.println("Pas de responsable pour le moment");
+					id=0;
+					
+				}//existence des responsable
+				else {
+					System.out.println("--choisir la filière :");
+					ecole.affichefiliereEcole();
+					try {//try1
+						int filierechoisie=sc.nextInt();
+						Respo respo =new Respo(nom,prenom,ecole.choisirFiliere(filierechoisie),pwd);
+						if(respo.exist(ecole.respoEcole)==false) {//existences du respo connecte
+							System.out.println("vous n'étes pas un responsable de filière");
+							id=0;
+							
+						}//existences du respo connecte
+						else if(respo.verificationPWD()==false) {//verifi pwd
+							System.out.println("vous n'étes pas un responsable de filière");
+							id=0;
+							
+						}//verifi pwd
+						else {//pwd o existence verifié
+							int r1=0;
+							while (r1==0) {//menu respo
+								System.out.println("--Choisir votre prochaine action:\n\n    1-Géstion des études\n    2-Géstion de scolarité\n    3-Gestion des exames\n    4-Retour\n");
+								try {//try 1
+									r1=sc.nextInt();	
+									if (r1!=1 && r1!=2 && r1!=3 && r1!=4) {
+										throw new InputMismatchException("Ce choix est invalide");
+										}
+								}//try 1
+								catch(InputMismatchException er) {//catch 1
+									System.out.println();
+									System.err.println("Ce choix est invalide");
+									sc.nextLine();
+									r1=0;
+								}//catch 1
+								
+								if(r1==1) {//gestion des etudes
+									System.out.println("bon");
+									r1=0;
+								}//gestion des etudes
+								if(r1==2) {//gestion de scolarité
+									System.out.println("bon");
+									r1=0;
+								}//gestion de scolarité
+								if(r1==3) {//gestion des exam
+									System.out.println("bon");
+									r1=0;
+								}//gestion des exam
+								if(r1==4) {//retour1
+									id=0;
+								}//retour1
+								
+								
+								
+								
+							}//menu respo
+							
+						}//pwd o existence verifié
+						
+					}//try1
+					catch(InputMismatchException er) { //catch 1
+						System.out.println();
+						System.err.println("Ce choix est invalide");
+						sc.nextLine();
+						id=0;
+					}//catch 1
+					catch(NullPointerException er) {//catch 1
+						System.out.println();
+						System.err.println("Pas de choix actuellement.");
+						sc.nextLine();
+						id=0;
+					}//catch 1
+					
+				
+				
+				}*/
+			}//connection responsable de filière
+			if(id==3) {//connection enseignant
+				
+			}//connection enseignant
+			if(id==4) {//connection etudiant
+				
+			}//connection etudiant
+			if(id==5) {//connection visiteur
+				
+			}//connection visiteur
+	 		
+	 		
+	 		
+	 		
+		}//connection while(id==0)
+
+	}//main
+
+}//class

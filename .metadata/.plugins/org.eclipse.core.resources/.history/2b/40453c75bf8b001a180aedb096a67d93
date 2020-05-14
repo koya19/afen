@@ -1,0 +1,61 @@
+package AIAC;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class Ecole {
+	protected  String nomEcole;
+	protected  String abrEcole;
+	protected  String adressEcole;
+	protected  String fondateur;
+	protected  String type;
+	protected  Set <Student> studEcole=new TreeSet<>();
+	protected  Set <Class> classEcole= new TreeSet<>();
+	protected  Set <Promo> promoEcole= new HashSet<>();
+	protected  Set <Filiere> filiereEcole= new TreeSet<>();
+	
+	
+	public Ecole() {
+		
+	}
+	
+	public Ecole(String nomEcole, String abrEcole,String fondateur,String type, String adressEcole) {
+	
+		this.nomEcole = nomEcole;
+		this.abrEcole = abrEcole;
+		this.adressEcole = adressEcole;
+		this.fondateur=fondateur;
+		this.type=type;
+		
+	}
+	
+	public void  affichestudEcole() {
+		Iterator iterator = studEcole.iterator();
+		 System.out.println("les  étudiants de l'"  + this.nomEcole);	
+		 while (iterator.hasNext()){
+	         System.out.println(iterator.next());
+		 }
+	}
+
+	@Override
+	public String toString() {
+		return "l'Ecole " + nomEcole + "(" + abrEcole + ") est une "+type + " fondé par "+ fondateur ;
+	}
+	public void affichefiliereEcole() {
+		Iterator iterator = filiereEcole.iterator();
+		 System.out.println("les  filières de l'"  + this.nomEcole);
+		 int i=1;
+		 while (iterator.hasNext()){
+	         System.out.println(i+"- "+iterator.next());
+	         i++;
+		 }
+		
+	}
+	
+	
+	
+}

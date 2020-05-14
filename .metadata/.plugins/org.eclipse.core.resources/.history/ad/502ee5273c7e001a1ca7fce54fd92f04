@@ -1,0 +1,26 @@
+package AIAC;
+
+
+public class Student implements Comparable<Student> {
+	protected String firstnameStud;
+	protected String lastnameStud;
+	protected Class c;
+	
+//--------------------------------------------------------------------------------
+	public Student () {
+		firstnameStud= "";
+		firstnameStud="";
+		
+	}
+	
+	public Student (String a, String b) {
+		firstnameStud= a;
+		lastnameStud=b;
+		
+	}
+//--------------------------------------------------------------------------------------
+	public int compareTo(Student s)
+    {         
+        return this.lastnameStud.compareTo(s.lastnameStud) ;    //Sorts the objects in descending order
+}
+}

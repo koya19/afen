@@ -1,0 +1,260 @@
+package gestiondesEtudes;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+public class InscriptionAdministrative {
+	protected Ecole ecole;
+	protected Student e = new Student();
+	protected String nom;
+	protected String prenom;
+	protected String CNE;
+	protected Date dN = new Date();
+	protected String mail;
+	protected String telephone;
+	protected String formation;
+	protected boolean paiement = false;
+	protected String sexe;
+	protected Filiere filière;
+	SimpleDateFormat s= new SimpleDateFormat("dd MM yyyy");
+	
+	
+	
+	Scanner sc = new Scanner(System.in);
+	
+	public InscriptionAdministrative(Ecole ecole) throws ParseException {
+		this.ecole=ecole;
+		setNom();
+		setPrenom();
+		setdN();
+		setCNE();
+		setFilière();
+		setMail();
+		setTelephone();
+		setFormation();
+		setSexe();
+		setPaiement();
+		confirmer();
+	}
+
+	public String getCNE() {
+		return CNE;
+	}
+
+	public void setCNE() {
+		System.out.println("Veuillez entrer votre CNE");
+		e.CNE = sc.next();
+	}
+
+	public String getNom() {
+		return nom + " " + prenom;
+	}
+
+	public void setNom() {
+		System.out.println("Veuillez entrer votre nom");
+		e.lastnamePers = sc.next();
+	
+	}
+	
+	public void setPrenom() {
+	
+		System.out.println("Veuillez entrer votre prénom");
+		e.firstnamePers = sc.next();
+		
+	}
+	
+
+
+	public void setdN() throws ParseException {
+		System.out.println("Veuillez entrer votre date de naissance sous forme dd mm yyy");
+		String date=sc.nextLine();
+		e.date=s.parse(date);
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail() {
+		
+		System.out.println("Veuillez entrer votre mail");
+		e.mail = sc.next();
+		
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone() {
+		
+		System.out.println("Veuillez entrer votre telephone");
+		e.telephone = sc.next();
+		
+	}
+
+	public String getFormation() {
+		return formation;
+	}
+
+	public void setFormation() {
+		int i=0;
+		while(i==0) {
+		System.out.println("Votre formation est :\n 1) CPGE\n 2) Autre");
+		try {
+			
+			i = sc.nextInt();
+			if (i!=1 && i!=2) {
+				throw  new InputMismatchException("Ce choix est invalide");
+				
+			}
+			break;
+			} catch (InputMismatchException e) {
+				e.printStackTrace();
+				System.out.println("Ressayer");
+			}
+		}
+			
+			if (i == 1) {
+				System.out.println("Veuillez préciser votre filière de CPGE");
+				String s = sc.next();
+				e.formation = "CPGE filière : " + s;
+			}
+			else if (i == 2){
+				System.out.println("Veuillez préciser votre formation");
+				String s = sc.next();
+				e.formation = s;
+			}
+
+	}
+
+	public String isPaiement() {
+		if (e.paiement == true) return "Paiement validé";
+		else return "Paiement non validé";
+	}
+
+	public void setPaiement() {
+	
+		System.out.println("Est-ce que vous avez effectué le paiement :\n 1) Oui\n 2) Non");
+		int z = sc.nextInt();
+		
+		if (z == 1) {
+			e.paiement = true;
+		}
+		else if (z == 2) {
+			e.paiement = false;
+		} 
+		else {
+			System.out.println("Ressayer");
+			setPaiement();
+		}
+		
+	}
+
+	public String getSexe() {
+		return sexe;
+	}
+
+	public void setSexe() {
+		int I;
+		System.out.println("Vous êtes : \n 1) Femme\n 2) Homme");
+		I = sc.nextInt();
+		if (I == 1) e.sexe = "Femme";
+		else if (I == 2) e.sexe = "Homme";
+		else {
+			System.out.println("Ressayez\n");
+			setSexe();
+		}
+	}
+
+	@Override
+	public String toString() {
+		return "Nom complet : " + e.lastnamePers + " " + e.firstnamePers + "\nSexe : " + e.sexe + "\nDate de naissance : " +s.format(e.date)
+				+ "\nTéléphone : " +e.telephone + "\nAdresse électronique : " + e.mail + "\nFormation initiale : " + e.formation + "\nEtat de  paiement : " + isPaiement() ;
+	}
+	
+	public void récapitulatifInscription() {
+		System.out.println(toString());
+	}
+	
+	
+	public void confirmer() throws ParseException {
+		System.out.println("Vérifiez les informations que vous avez saisies : \n");
+		récapitulatifInscription();
+		System.out.println("\nVous êtes sur de ces informations ?\n 1) Confirmer\n 2) Il y a une erreur quelque part");
+		int i = sc.nextInt();
+		sc.nextLine();
+		if (i == 1) {
+			System.out.println("Insciption enregistée avec succès\nBienvenu ");
+			e = new Student (nom, prenom,dN ,mail, telephone, CNE,1,filière);
+			e.afficherStudent();
+			quitter();
+		}
+		else if (i == 2) {
+			sc.nextLine();
+			System.out.println("Vous voulez modifier : \n 1) Votre nom\n 2) Votre prenom\n 3) Votre date de naissance\n 4) Votre sexe\n 5) Votre CNE\n 6) Votre numéro de téléphone\n 7) Votre adresse électronique\n 8) Votre formation\n 9) L'état du paiement");
+			int j = sc.nextInt();
+			switch (j) {
+			case 1 : setNom(); confirmer(); break;
+			case 2 : setPrenom(); confirmer(); break;
+			case 3 : setdN(); confirmer(); break;
+			case 4 : setSexe(); confirmer(); break;
+			case 5 : setCNE(); confirmer(); break;
+			case 6 : setTelephone(); confirmer(); break;
+			case 7 : setMail(); confirmer(); break;
+			case 8 : setFormation(); confirmer(); break;
+			case 9 : setPaiement(); confirmer(); break;
+			}
+		}
+		else {
+			System.out.println("Ressayer");
+			confirmer();
+		}
+	}
+	
+	public void statInscription() {
+		
+	}
+	
+	public void quitter() {
+		sc.close();
+	}
+
+	public String getFilière() {
+		return filière.nomFilière;
+	}
+
+	public void setFilière() {
+		int i=0;
+		while(i==0){
+		System.out.println("choisir votre filière :");
+		ecole.affichefiliereEcole();
+		try {
+			int filièrechoisie=sc.nextInt();
+			sc.nextLine();
+			if(0>filièrechoisie|| filièrechoisie>ecole.filiereEcole.size()) {
+				throw new InputMismatchException("Ce choix est invalide.");
+			}
+			filière=ecole.choisirFiliere(filièrechoisie);
+			break;
+		}catch(InputMismatchException e) {
+			System.out.println();
+			System.err.println("Ce choix est invalide");
+			sc.nextLine();
+			i=0;
+			
+		}
+		catch(NullPointerException e) {
+			System.out.println();
+			System.err.println("Pas de choix actuellement.");
+			sc.nextLine();
+			i=0;
+		}
+		}
+	}
+	
+}
+

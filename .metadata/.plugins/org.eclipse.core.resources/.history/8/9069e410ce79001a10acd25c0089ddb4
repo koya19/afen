@@ -1,0 +1,17 @@
+package learn;
+
+import java.util.Scanner;
+
+public class A {
+	public static void main(String[] args) {
+		System.out.println("hello Afaf, \nmay you're good \nplease enter your age");
+		Scanner sc=new Scanner(System.in);
+		int age=sc.nextInt();
+		System.out.print("your age is " + age);
+		System.out.println("entrer your name");
+		String name=sc.nextLine();
+		System.out.println("so you're name is " + name);
+		
+			}
+
+}
