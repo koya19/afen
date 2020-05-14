@@ -585,6 +585,10 @@ public class Project {
 				}
 			}//connection enseignant
 			if(id==4) {//connection etudiant
+				if(ecole.studEcole.isEmpty()) {
+					System.out.println("Aucun Etudiant dans cette école");
+				}
+				else if ()
 				
 			}//connection etudiant
 			if(id==5) {//connection visiteur

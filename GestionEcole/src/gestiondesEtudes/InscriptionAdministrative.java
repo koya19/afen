@@ -29,6 +29,7 @@ public class InscriptionAdministrative {
 		setFormation();
 		setSexe();
 		setPaiement();
+		setPwd();
 		confirmer();
 	}
 
@@ -57,7 +58,13 @@ public class InscriptionAdministrative {
 		e.firstnamePers = sc.next();
 		
 	}
-	
+	public void setPwd() {
+		System.out.println("entrez votre mot de passe :");
+		e.pwd=sc.nextLine();
+	}
+	public String getPwd() {
+		return e.pwd;
+	}
 
 
 	@SuppressWarnings("deprecation")
