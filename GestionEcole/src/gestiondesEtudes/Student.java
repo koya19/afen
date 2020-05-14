@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import gestiondeScolarité.Module;
 
@@ -34,9 +35,9 @@ public class Student  extends Personne implements Comparable<Student> {
 		super();
 	}
 	
-	public Student (String a, String b) {
+	public Student (String a, String b,String pwd) {
 		super(a,b);	
-		System.out.println("vous avez creer l'éléve " + this.toString());
+		this.pwd=pwd;
 		}
 	
 /*
@@ -56,7 +57,29 @@ public Student(Class c,String lastnamePers, String firstnamePers, String cniPers
 	this.anneePromo = anneePromo;
 	
 }
-
+public boolean verificationPWD() {
+	for (Student a :filière.ecole.studEcole) {
+		if (a.equals(this)) {
+			if (a.pwd.equals(this.pwd)) {
+				return true;
+			}
+				
+			break;
+		}
+	}
+	 return false;
+}
+public boolean exist() {
+	for (Student stud: filière.ecole.studEcole) {
+		if (stud.equals(this)) {
+			return true;
+			
+		}
+		
+		
+	}
+	 return false;
+}
 //-------------------------------------------------------------------------------------------
 
 public void afficherStudent() {

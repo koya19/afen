@@ -73,10 +73,10 @@ public class Project {
 				else {// passwd et l'existence verifié admin
 					int ad1=0;
 					while (ad1==0) {//menu d'administrateur
-						System.out.println("--Choisir votre prochaine action:\n\n    1-Géstion des études\n    2-Géstion de scolarité\n    3-Les statistiques et rapports\n    4-Retour\n");
+						System.out.println("--Choisir votre prochaine action:\n\n    1-Géstion des études\n        2-Les statistiques et rapports\n    3-Retour\n");
 						try {//try 1
 							ad1=sc.nextInt();	
-							if (ad1!=1 && ad1!=2 && ad1!=3 && ad1!=4) {
+							if (ad1!=1 && ad1!=2 && ad1!=3 ) {
 								throw new InputMismatchException("Ce choix est invalide");
 								}
 						}//try 1
@@ -137,11 +137,8 @@ public class Project {
 							}//menu gestion des etudes
 						}//gestion des etudes
 						
-						if(ad1==2) {//gestion de scolarité
-							
-							ad1=0;
-						}//gestion de scolarité
-						if(ad1==3) {//les statistique et rapports
+				
+						if(ad1==2) {//les statistique et rapports
 							int ad2=0;
 							while (ad2==0) {//menu les statistique et rapports
 								System.out.println("--Choisir votre prochaine action:\n\n    1-Statistiques et rapport sur les études\n    2-Statistiques et rapport sur la scolarité\n    3-Statistiques et rapport sur les exams\n    4-Retour\n");
@@ -206,7 +203,7 @@ public class Project {
 								}//retour2
 							}//menu les statistique et rapports
 						}//les statistique et rapports
-						if(ad1==4) {//retour1
+						if(ad1==3) {//retour1
 							System.out.println("Merci pour votre visite.");
 							id=0;
 						}//retour1
@@ -584,13 +581,46 @@ public class Project {
 					}//pwd o existence verifié
 				}
 			}//connection enseignant
+//---------------------------------------------STUD------------------------------------
 			if(id==4) {//connection etudiant
-				if(ecole.studEcole.isEmpty()) {
-					System.out.println("Aucun Etudiant dans cette école");
+				int s1=0;
+				while(s1==0) {
+				if(ecole.studEcole.isEmpty()) {//ecole vide
+					System.out.println("Aucun Etudiant dans cette école\n s'inscrire?\n 1-oui\n 2-non\n");
+					try {
+					s1=sc.nextInt();
+					if(s1!=1 && s1!=2) {
+						throw new InputMismatchException("Ce choix est invalide");
+					}
+				}catch(InputMismatchException er) {//catch 1
+					System.out.println();
+					System.err.println("Ce choix est invalide");
+					sc.nextLine();
+					s1=0;
 				}
-				else if ()
-				
+				}//ecole vide
+				else {
+					Student s= new Student(nom, prenom,pwd);
+					s1=0;
+					if(s.exist()==false) {
+						while(s1==0) {
+						System.out.println("Vous n'étes pas un étudiant de cette école :\n 1-s'inscrire\n    2-quitter");
+						try {
+						s1=sc.nextInt();
+						if(s1!=1 && s1!=2) {
+							throw new InputMismatchException("Ce choix est invalide");
+						}
+					}catch(InputMismatchException er) {//catch 1
+						System.out.println();
+						System.err.println("Ce choix est invalide");
+						sc.nextLine();
+						r1=0;
+					}//catch 1
+						}
+				}
+				}
 			}//connection etudiant
+//----------------------------VISITEUR--------------------------------------------------------
 			if(id==5) {//connection visiteur
 				
 			}//connection visiteur
