@@ -1,5 +1,6 @@
 package gestiondesEtudes;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Visiteur extends Personne{
@@ -33,12 +34,19 @@ public class Visiteur extends Personne{
 	
 	public void gestionVisiteur() {
 		int a=0;
-		while(a!=3)
+		while(a!=3) {
 		System.out.println("Choisissez votre prochaine action :\n 1) Afficher des informations sur l'école\n 2) Afficher les filières de l'école\n 3) Quitter");
+		try {
 		switch(sc.next()) {
-		case "1" : afficherEcole(); gestionVisiteur(); break;
+		case "1" : e.afficherEcole(); gestionVisiteur(); break;
 		case "2" : afficherFiliere(); gestionVisiteur(); break;
-		case "3" : quitter(); break;
+		case "3" : a=3; break;
+		}
+		}catch(InputMismatchException er) {//catch 1
+			System.out.println();
+			System.err.println("Ce choix est invalide\n");
+			sc.nextLine();
 		}
 	}
+}
 }

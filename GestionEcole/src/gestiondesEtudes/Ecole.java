@@ -865,5 +865,9 @@ public class Ecole implements Inscription{
 			}
 			 return false;
 		}
+		public void afficherEcole() {
+			System.out.println("l'ecole "+this.nomEcole + "("+this.abrEcole+") est une école de type " +this.type+"fondé par "+ this.fondateur);
+			System.out.println("l'adresse de l'ecole :" +this.adressEcole);
+		}
 }
 	

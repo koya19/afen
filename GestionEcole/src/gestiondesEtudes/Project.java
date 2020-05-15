@@ -57,10 +57,12 @@ public class Project {
 			String nom =sc.nextLine();
 			System.out.println(" ->Entrez votre  Prénom");
 			String prenom =sc.nextLine();
-	 		System.out.println(" ->Entrez votre mot de passe");
-	 		String pwd =sc.nextLine();
+	 		
+			
 	 	
 			if(id==1) {//connection admin
+				System.out.println(" ->Entrez votre mot de passe");
+		 		String pwd =sc.nextLine();
 				administrateur admin=new administrateur(nom,prenom,pwd,ecole);
 				if (admin.exist(ecole.adminEcole)==false) {//check l'existence du admin
 					System.out.println("vous n'étes pas membre de l'administration\n");
@@ -219,6 +221,8 @@ public class Project {
 			}////connection admin
 	////---------------------------------------------Responsable de filière----------------------------------------
 			if(id==2) {//connection responsable de filière
+				System.out.println(" ->Entrez votre mot de passe");
+		 		String pwd =sc.nextLine();
 				if (ecole.respoEcole.isEmpty()==true) {//existence des responsable
 					System.out.println("Pas de responsable pour le moment.");
 					id=0;
@@ -529,6 +533,8 @@ public class Project {
 //-----------------------------------------------------Prof---------------------------------------------
 			
 			if(id==3) {//connection enseignant
+				System.out.println(" ->Entrez votre mot de passe");
+		 		String pwd =sc.nextLine();
 				if (ecole.profEcole.isEmpty()==true) {//existence des prof
 					System.out.println("Pas d'enseignant pour le moment.");
 					id=0;
@@ -584,6 +590,8 @@ public class Project {
 			}//connection enseignant
 //---------------------------------------------STUD------------------------------------
 			if(id==4) {//connection etudiant
+				System.out.println(" ->Entrez votre mot de passe");
+		 		String pwd =sc.nextLine();
 				int s1=0;
 				Student s= new Student(nom, prenom,pwd);
 				while(s1==0) {//menu
@@ -664,10 +672,7 @@ public class Project {
 				if (s1==1) {//inscription
 					InscriptionPédagogique ip=new InscriptionPédagogique(ecole);
 					s=ip.et;
-					System.out.println(ecole.studEcole);
-					System.out.println(s.getFiliere().studFiliere);
-					System.out.println(ecole.pwdEcole);
-					System.out.println(s.getC().stud);
+					
 					s1=0;
 					
 				}//inscription

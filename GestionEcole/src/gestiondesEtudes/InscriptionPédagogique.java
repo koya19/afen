@@ -29,7 +29,8 @@ public class InscriptionPédagogique {
 				System.out.println();
 				System.err.println("Ce choix est invalide");
 				sc.nextLine();
-		}//catch 1
+				
+			}
 			}
 		}
 		
@@ -41,6 +42,7 @@ public class InscriptionPédagogique {
 				ia.f.choisirClassFilere().addStud(ia.e);
 				ia.e.anneePromo=1;
 				et=ia.e;
+				
 				}
 			}
 		
@@ -58,9 +60,13 @@ public class InscriptionPédagogique {
 			int i=1;
 			for(Student s:c.stud) {
 				if(i==studchoisie) {
-					if(s.exist(ec.studEcole)) {
-						System.err.println("vous n'etes pas un étudiant de cette classe");
+					et=s;
+					if(s.Decision==null) {
+						
+						System.err.println("Pas de decision pour le moment. Veuillez attendre la décision du conseil");
+						break;
 					}
+					
 					else {
 					if (s.getDecision().equalsIgnoreCase("Passage")) {
 						s.setAnneePromo(2);	
@@ -79,14 +85,13 @@ public class InscriptionPédagogique {
 					else {
 							System.out.println("Désolé, vous allez redoubler. Bon courage !");
 					}
-				}
 					break;
+					}
 				}
+			
 				else i++;
 			}
-						
-					
-				}				
+	}				
 	
 				
 		
