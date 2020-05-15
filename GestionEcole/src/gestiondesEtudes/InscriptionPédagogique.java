@@ -8,7 +8,7 @@ public class InscriptionPédagogique {
 		protected int anneePromo;
 		//protected Promotion p;
 		protected int filierechoisie;
-		//protected Student et;
+		protected Student et;
 		protected Ecole ec;
 		protected Class c;
 		protected Filiere f;
@@ -17,19 +17,30 @@ public class InscriptionPédagogique {
 		
 		public InscriptionPédagogique(Ecole ec) throws ParseException {
 			this.ec = ec;
-			
+			anneePromo=0;
+			while(anneePromo==0) {
 			System.out.println("Vous vous inscrivez au titre de la :\n 1) Première année\n 2) Deuxième année\n 3) Troisième année");
+			try {
 			anneePromo = sc.nextInt();
 			sc.nextLine();
 			gestion();
+			break;
+			}catch(InputMismatchException er) {//catch 1
+				System.out.println();
+				System.err.println("Ce choix est invalide");
+				sc.nextLine();
+		}//catch 1
+			}
 		}
 		
 		public void firstYear() throws ParseException {
 			if (anneePromo == 1) {
 				InscriptionAdministrative ia = new InscriptionAdministrative(ec);
+				System.out.println("*****************************************************\n");
 				System.out.println("choisir la classe");
 				ia.f.choisirClassFilere().addStud(ia.e);
 				ia.e.anneePromo=1;
+				et=ia.e;
 				}
 			}
 		
@@ -47,6 +58,10 @@ public class InscriptionPédagogique {
 			int i=1;
 			for(Student s:c.stud) {
 				if(i==studchoisie) {
+					if(s.exist(ec.studEcole)) {
+						System.err.println("vous n'etes pas un étudiant de cette classe");
+					}
+					else {
 					if (s.getDecision().equalsIgnoreCase("Passage")) {
 						s.setAnneePromo(2);	
 						c.stud.remove(s);
@@ -59,11 +74,12 @@ public class InscriptionPédagogique {
 							c=f.choisirClassFilere();
 							c.addStud(s);
 							System.out.println("\n----------------------\n");
-							
+							et=s;
 					}
 					else {
 							System.out.println("Désolé, vous allez redoubler. Bon courage !");
 					}
+				}
 					break;
 				}
 				else i++;

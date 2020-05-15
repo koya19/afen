@@ -58,7 +58,7 @@ public Student(Class c,String lastnamePers, String firstnamePers, String cniPers
 	
 }
 public boolean verificationPWD() {
-	for (Student a :filière.ecole.studEcole) {
+	for (Student a :filière.studFiliere) {
 		if (a.equals(this)) {
 			if (a.pwd.equals(this.pwd)) {
 				return true;
@@ -69,8 +69,8 @@ public boolean verificationPWD() {
 	}
 	 return false;
 }
-public boolean exist() {
-	for (Student stud: filière.ecole.studEcole) {
+public boolean exist(Set <Student> list) {
+	for (Student stud: list) {
 		if (stud.equals(this)) {
 			return true;
 			

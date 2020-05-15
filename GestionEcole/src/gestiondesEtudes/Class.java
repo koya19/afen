@@ -82,6 +82,8 @@ public class Class  implements Comparable<Class> {
 				stud.add(s);
 				promo.studPromo.add(s);
 				filiere.studFiliere.add(s);
+				ecole.studEcole.add(s);
+				ecole.pwdEcole.put(s, s.pwd);
 				s.c=this;
 				s.filière=this.filiere;
 				

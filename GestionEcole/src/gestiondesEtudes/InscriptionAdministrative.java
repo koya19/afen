@@ -60,7 +60,8 @@ public class InscriptionAdministrative {
 	}
 	public void setPwd() {
 		System.out.println("entrez votre mot de passe :");
-		e.pwd=sc.nextLine();
+		//sc.hasNextLine();
+		e.pwd=sc.next();
 	}
 	public String getPwd() {
 		return e.pwd;
@@ -74,16 +75,47 @@ public class InscriptionAdministrative {
 		return s;
 	}
 	public void setdN() {
+		int i=0;
+		while(i==0) {//year
+			try {
 		System.out.println("Veuillez entrer votre annee de naissance");
 		dN.setYear(sc.nextInt());
 		sc.nextLine();
-		System.out.println("Veuillez entrer votre mois de naissance");
-		dN.setMonth(sc.nextInt());
-		sc.nextLine();
-		System.out.println("Veuillez entrer votre jour de naissance");
-		dN.setDate(sc.nextInt());
-		sc.nextLine();
-		e.date=dN;
+		i=1;
+			}catch(InputMismatchException er) {//catch 1
+				System.out.println();
+				System.err.println("Ce choix est invalide");
+				sc.nextLine();
+				
+			}//catch 1
+		}//year
+			while(i==1) {//mo
+				try {
+					System.out.println("Veuillez entrer votre mois de naissance");
+					dN.setMonth(sc.nextInt());
+					sc.nextLine();
+					i=2;
+				}catch(InputMismatchException er) {//catch 1
+					System.out.println();
+					System.err.println("Ce choix est invalide");
+					sc.nextLine();
+			}//catch 1
+			}//mo
+				while(i==2) {//d
+					try {
+						System.out.println("Veuillez entrer votre jour de naissance");
+						dN.setDate(sc.nextInt());
+						sc.nextLine();
+						e.date=dN;
+						break;
+					}catch(InputMismatchException er) {//catch 1
+						System.out.println();
+						System.err.println("Ce choix est invalide");
+						sc.nextLine();
+				}//catch 1
+				}//d
+
+		
 	}
 
 	public String getMail() {
@@ -206,7 +238,7 @@ public class InscriptionAdministrative {
 		}
 		else if (i == 2) {
 			sc.nextLine();
-			System.out.println("Vous voulez modifier : \n 1) Votre nom\n 2) Votre prenom\n 3) Votre date de naissance\n 4) Votre sexe\n 5) Votre CNE\n 6) Votre numéro de téléphone\n 7) Votre adresse électronique\n 8) Votre formation\n 9) L'état du paiement");
+			System.out.println("Vous voulez modifier : \n 1) Votre nom\n 2) Votre prenom\n 3) Votre date de naissance\n 4) Votre sexe\n 5) Votre CNE\n 6) Votre numéro de téléphone\n 7) Votre adresse électronique\n 8) Votre formation\n 9)Changer votre mot de passe 10) L'état du paiement");
 			int j = sc.nextInt();
 			switch (j) {
 			case 1 : setNom(); confirmer(); break;
@@ -217,7 +249,8 @@ public class InscriptionAdministrative {
 			case 6 : setTelephone(); confirmer(); break;
 			case 7 : setMail(); confirmer(); break;
 			case 8 : setFormation(); confirmer(); break;
-			case 9 : setPaiement(); confirmer(); break;
+			case 9 : setPwd(); confirmer();break;
+			case 10 : setPaiement(); confirmer(); break;
 			}
 		}
 		else {

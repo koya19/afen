@@ -419,12 +419,12 @@ public class Project {
 						
 							}//gestion des etudes
 						
-							if(r1==2) {//gestion de scolarité
+							if(r1==2) {//gestion de scolarité  
 								int r2=0;
 								while(r2==0) {//MENU GESTION SCOLARIT2
 									System.out.println("choisir votre prochaine action:\n    1-Gestion des abscences\n    2-Gestion des notes\n    3-Retour\n");
 									try {
-									r1=sc.nextInt();
+									r2=sc.nextInt();
 									if (r2!=1 && r2!=2  && r2!=3) {
 										throw new InputMismatchException("Ce choix est invalide");
 										}
@@ -591,8 +591,12 @@ public class Project {
 					System.out.println("Aucun Etudiant dans cette école\n s'inscrire?\n 1-oui\n 2-non\n");
 					try {
 					s1=sc.nextInt();
+					
 					if(s1!=1 && s1!=2) {
 						throw new InputMismatchException("Ce choix est invalide");
+					}
+					if(s1==2) {
+						s1=4;
 					}
 				}catch(InputMismatchException er) {//catch 1
 					System.out.println();
@@ -601,16 +605,17 @@ public class Project {
 					s1=0;
 				}
 				}//ecole vide
-				else if(s.exist()==false) {//n'existe pas
+				else if(s.exist(ecole.studEcole)==false) {//n'existe pas
 						
-						System.out.println("Vous n'étes pas un étudiant de cette école :\n 1-s'inscrire\n    2-quitter");
+						System.out.println("Vous n'étes pas un étudiant de cette école :\n 1-s'inscrire\n 2-quitter");
 						try {
+						
+						if(s1!=1 && s1!=2) {
+							throw new InputMismatchException("Ce choix est invalide");
+						}
 						s1=sc.nextInt();
 						if(s1==2) {
 							s1=4;
-						}
-						if(s1!=1 && s1!=2) {
-							throw new InputMismatchException("Ce choix est invalide");
 						}
 					}catch(InputMismatchException er) {//catch 1
 						System.out.println();
@@ -619,40 +624,56 @@ public class Project {
 						s1=0;
 					}//catch 1
 						}//n'existe pas
-				else if (s.verificationPWD()==false) {//pwd incorrecte
+				else {//etudiant existant
+					for(Student st:ecole.studEcole) {//affectation des filière
+						if(st.equals(s)) {//affectation de filière
+							s.filière=st.filière;
+							break;
+						}//affectation de filière
+					}//affectation de filière
+					
+					 if (s.verificationPWD()==false) {   //pwd incorrecte
 					System.out.println("Mot de passe incorrecte");
 					id=0;
 					break;
 				}//pwd incorrecte
 				else {//verification des pwd et existence
+					
+				
 					for(Student st:ecole.studEcole) {//affectation des données
 						if(st.equals(s)) {//affectation des données
 							s=st;
 							break;
 						}//affectation des données
 					}//affectation des données
-					System.out.println("Choisir votre prochaine action :\n    1-s'inscrire pour l'année prochaine\n    2-Afficher les notes\n    3-Afficher l'EDT\n    3-Retour\n" );
+					
+					System.out.println("Choisir votre prochaine action :\n    1-s'inscrire pour l'année prochaine\n    2-Afficher les notes\n    3-Afficher l'EDT\n    4-Retour\n" );
 					try {
 						s1=sc.nextInt();
-						if(s1==2) {
-							s1=4;
-						}
-						if(s1!=1 && s1!=2) {
-							throw new InputMismatchException("Ce choix est invalide");
+						if(s1!=1 && s1!=2 && s1!=3 && s1!=4) {
+							throw new InputMismatchException("Ce choix est invalide\n");
 						}
 					}catch(InputMismatchException er) {//catch 1
 						System.out.println();
-						System.err.println("Ce choix est invalide");
+						System.err.println("Ce choix est invalide\n");
 						sc.nextLine();
 						s1=0;
 					}//catch 1
 				}//verification des pwd et existence
+				}//etudiant existant
 				if (s1==1) {//inscription
 					InscriptionPédagogique ip=new InscriptionPédagogique(ecole);
+					s=ip.et;
+					System.out.println(ecole.studEcole);
+					System.out.println(s.getFiliere().studFiliere);
+					System.out.println(ecole.pwdEcole);
+					System.out.println(s.getC().stud);
+					s1=0;
 					
 				}//inscription
 				if(s1==2) {//afficher les notes
 					s.c.affichernoteStud( s);
+					s1=0;
 				}//afficher les notes
 				if(s1==3) {//afficher les EDT
 					s.c.afficheEdtClass();
