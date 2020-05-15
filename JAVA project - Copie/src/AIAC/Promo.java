@@ -1,0 +1,52 @@
+package AIAC;
+import java.util.*;
+
+public class Promo {
+	protected int nPromo;
+	protected Set<Class> classPromo= new TreeSet<>();
+	protected Set <Student>studPromo=new TreeSet<>();
+	
+	public Promo () {
+		nPromo=0;
+		
+	}
+	public Promo (int a) {
+		nPromo=a;
+		System.out.println("vous avez creer la promotion"+this.nPromo);
+	}
+	
+	public Promo(Filiere filiere,int b) {
+		nPromo=b;
+		
+		filiere.promoFiliere.add(this);
+		System.out.println("vous avez créér promotion"+this.toString()+"de la filière "+filiere.toString());
+		
+	}
+	//------------------------------------------------------------------------
+	
+	public String toString() {
+		return " " + nPromo + " ";
+	}
+	
+	//------------------------------------------------------------------------
+	 
+	 
+	 public void afficheClassPromo() {
+		 Iterator iterator = classPromo.iterator();
+		 System.out.println("les  étudiants de la promotion "  + this.toString());	
+		 while (iterator.hasNext()){
+				System.out.println( iterator.next() );
+			}
+	 }
+	 public void afficheStudPromo() {
+		 Iterator iterator = studPromo.iterator();
+		 System.out.println("les  étudiants de la promotion "  + this.toString());	
+		 while (iterator.hasNext()){
+	         System.out.println(iterator.next());
+		 }
+		 
+	
+		 
+	 }
+
+}
