@@ -584,7 +584,8 @@ public class Project {
 //---------------------------------------------STUD------------------------------------
 			if(id==4) {//connection etudiant
 				int s1=0;
-				while(s1==0) {
+				Student s= new Student(nom, prenom,pwd);
+				while(s1==0) {//menu
 				if(ecole.studEcole.isEmpty()) {//ecole vide
 					System.out.println("Aucun Etudiant dans cette école\n s'inscrire?\n 1-oui\n 2-non\n");
 					try {
@@ -599,14 +600,14 @@ public class Project {
 					s1=0;
 				}
 				}//ecole vide
-				else {
-					Student s= new Student(nom, prenom,pwd);
-					s1=0;
-					if(s.exist()==false) {
-						while(s1==0) {
+				else if(s.exist()==false) {//n'existe pas
+						
 						System.out.println("Vous n'étes pas un étudiant de cette école :\n 1-s'inscrire\n    2-quitter");
 						try {
 						s1=sc.nextInt();
+						if(s1==2) {
+							s1=4;
+						}
 						if(s1!=1 && s1!=2) {
 							throw new InputMismatchException("Ce choix est invalide");
 						}
@@ -614,15 +615,58 @@ public class Project {
 						System.out.println();
 						System.err.println("Ce choix est invalide");
 						sc.nextLine();
-						r1=0;
+						s1=0;
 					}//catch 1
+						}//n'existe pas
+				else if (s.verificationPWD()==false) {//pwd incorrecte
+					System.out.println("Mot de passe incorrecte");
+					id=0;
+					break;
+				}//pwd incorrecte
+				else {//verification des pwd et existence
+					for(Student st:ecole.studEcole) {//affectation des données
+						if(st.equals(s)) {//affectation des données
+							s=st;
+							break;
+						}//affectation des données
+					}//affectation des données
+					System.out.println("Choisir votre prochaine action :\n    1-s'inscrire pour l'année prochaine\n    2-Afficher les notes\n    3-Afficher l'EDT\n    3-Retour\n" );
+					try {
+						s1=sc.nextInt();
+						if(s1==2) {
+							s1=4;
 						}
-				}
-				}
+						if(s1!=1 && s1!=2) {
+							throw new InputMismatchException("Ce choix est invalide");
+						}
+					}catch(InputMismatchException er) {//catch 1
+						System.out.println();
+						System.err.println("Ce choix est invalide");
+						sc.nextLine();
+						s1=0;
+					}//catch 1
+				}//verification des pwd et existence
+				if (s1==1) {//inscription
+					InscriptionPédagogique ip=new InscriptionPédagogique(ecole);
+					
+				}//inscription
+				if(s1==2) {//afficher les notes
+					s.c.affichernoteStud( s);
+				}//afficher les notes
+				if(s1==3) {//afficher les EDT
+					s.c.afficheEdtClass();
+					s1=0;
+				}//afficher les EDT
+				if(s1==4) {//retour
+					id=0;
+				}//retour
+				}//menu
+				
 			}//connection etudiant
 //----------------------------VISITEUR--------------------------------------------------------
 			if(id==5) {//connection visiteur
-				
+				Visiteur v=new Visiteur(nom,prenom,ecole);
+				id=0;
 			}//connection visiteur
 	 		
 	 		

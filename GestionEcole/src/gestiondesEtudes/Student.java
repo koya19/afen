@@ -25,8 +25,8 @@ public class Student  extends Personne implements Comparable<Student> {
 	protected int nbrModuleNV;
 	protected int NbrTotalAbsence;
 	//protected final String profession="étudiant";
-	protected Map<Module, Double> notes =new HashMap<>();;
-	protected Map<Module, Double> notes2 =new HashMap<>();;
+	protected Map<Module, Double> notes =new HashMap<>();
+	protected Map<Module, Double> notes2 =new HashMap<>();
 	protected Map<Module, Double> notes3=new HashMap<>();
 	SimpleDateFormat s= new SimpleDateFormat("dd MM yyyy");
 	
@@ -106,6 +106,14 @@ public Class getC() {
 	return c;
 }
 
+public String getCNE() {
+	return CNE;
+}
+
+public void setCNE(String cNE) {
+	CNE = cNE;
+}
+
 public void setC(Class c) {
 	this.c = c;
 }
@@ -178,7 +186,50 @@ public int compareTo(Student s)
    {         
        return this.lastnamePers.compareTo(s.lastnamePers) ;    //Sorts the objects in descending order
    }
+
+//-------------------------------------------------------------------------------------
+public String miniPV() {
+	if (anneePromo == 1) {
+		return getCNE()+ " " + getLastnameStud() + " " + getFirstnameStud() + " " + moyenne1() + " " + getDecision();
+	}
+	else if (anneePromo == 2) {
+		return getCNE()+ " " + getLastnameStud() + " " + getFirstnameStud() + " " + moyenne2() + " " + getDecision();
+	}
+	else if (anneePromo == 3) {
+		return getCNE()+ " " + getLastnameStud() + " " + getFirstnameStud() + " " + moyenne3() + " " + getDecision();
+	}
+	else return "";
 }
 
+public float moyenne1() {
+	float f = 0;
+	int i = 0;
+	for (Module m : c.moduleClass) {
+		f += notes.get(m);
+		i++;
+	}
+	return f/i;
+}
+
+public float moyenne2() {
+	float f = 0;
+	int i = 0;
+	for (Module m : c.moduleClass) {
+		f += notes2.get(m);
+		i++;
+	}
+	return f/i;
+}
+
+public float moyenne3() {
+	float f = 0;
+	int i = 0;
+	for (Module m : c.moduleClass) {
+		f += notes3.get(m);
+		i++;
+	}
+	return f/i;
+}
+}
 	
 	

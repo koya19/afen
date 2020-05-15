@@ -499,6 +499,15 @@ public class Class  implements Comparable<Class> {
 			}
 			else return false;
 	 }
+	 public void affichernoteStud(Student s) {
+		 for (Module m: this.moduleClass) {
+			 System.out.println("Vos notes du module "+m.toString());
+			 for (Element e: m.getEleModule()) {
+				 e.affichenoteStud( s);
+			 }
+			 System.out.println("la moyenne :"+ m.noteModule.get(s));
+		 }
+	 }
 	 public void addnoteStud() {
 		 int a=2;
 		 while(a==2) {
