@@ -353,10 +353,10 @@ public class Project {
 									if(r1==6) {//Afficher les données
 										int r2=0;
 										while(r2==0) {//menu d'affichage
-											System.out.println("choisir votre prochaine action:\n    1-afficher les classes de la filière"+resp.filière.nomFilière+"\n    2-afficher les étudiants de la filière"+resp.filière.nomFilière+"\n    3-afficher les profs de la filière"+resp.filière.nomFilière+"\n    4-afficher les emploies d'une classe"+resp.filière.nomFilière+"\n    5-afficher les modules d'une classes"+resp.filière.nomFilière+"\n    6-afficher les element d'un module"+resp.filière.nomFilière+"\n    7-Retour\n");										
+											System.out.println("choisir votre prochaine action:\n    1-afficher les classes de la filière"+resp.filière.nomFilière+"\n    2-afficher les étudiants de la filière"+resp.filière.nomFilière+"\n    3-afficher les profs de la filière"+resp.filière.nomFilière+"\n    4-afficher les emploies d'une classe"+resp.filière.nomFilière+"\n    5-afficher les modules d'une classes"+resp.filière.nomFilière+"\n    6-afficher les element d'un module"+resp.filière.nomFilière+"\n    7-afficher PV de délibérartion    8-Retour\n");										
 											try {//try 1
 											r2=sc.nextInt();
-											if (r2!=1 && r2!=2 && r2!=3 && r2!=4&& r2!=5 && r2!=6 && r2!=7 ) {
+											if (r2!=1 && r2!=2 && r2!=3 && r2!=4&& r2!=5 && r2!=6 && r2!=7 && r2!=8) {
 												throw new InputMismatchException("Ce choix est invalide");
 												}
 										}//try 1
@@ -405,8 +405,13 @@ public class Project {
 												r2=0;
 												
 											}//affichage element 
-											
-											if (r2==7) {//retour
+											if (r2==7) {//PV
+												Class cl= resp.filière.choisirClassFilere();
+												cl.affichermoduleClass();
+												PvDeDélibération p =new PvDeDélibération(cl)	;
+												p.générerPV();
+											}//rPV
+											if (r2==8) {//retour
 												r1=0	;
 											}//retour
 										

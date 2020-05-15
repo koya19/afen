@@ -7543,3 +7543,62 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.egit.core 4 0 2020-05-15 13:39:26.704
+!MESSAGE An exception occurred during push on URI https://github.com/afafrh/JAVA-PROJECT.git: https://github.com/afafrh/JAVA-PROJECT.git: Read timed out after 300 000 ms
+!STACK 0
+org.eclipse.jgit.api.errors.TransportException: https://github.com/afafrh/JAVA-PROJECT.git: Read timed out after 300 000 ms
+	at org.eclipse.jgit.api.PushCommand.call(PushCommand.java:180)
+	at org.eclipse.egit.core.op.PushOperation.run(PushOperation.java:217)
+	at org.eclipse.egit.ui.internal.push.PushJob.performJob(PushJob.java:86)
+	at org.eclipse.egit.ui.internal.jobs.RepositoryJob.run(RepositoryJob.java:59)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.errors.TransportException: https://github.com/afafrh/JAVA-PROJECT.git: Read timed out after 300 000 ms
+	at org.eclipse.jgit.transport.BasePackPushConnection.doPush(BasePackPushConnection.java:239)
+	at org.eclipse.jgit.transport.TransportHttp$SmartHttpPushConnection.doPush(TransportHttp.java:1354)
+	at org.eclipse.jgit.transport.BasePackPushConnection.push(BasePackPushConnection.java:170)
+	at org.eclipse.jgit.transport.PushProcess.execute(PushProcess.java:172)
+	at org.eclipse.jgit.transport.Transport.push(Transport.java:1368)
+	at org.eclipse.jgit.api.PushCommand.call(PushCommand.java:170)
+	... 4 more
+Caused by: java.io.InterruptedIOException: Read timed out after 300 000 ms
+	at org.eclipse.jgit.util.io.TimeoutInputStream.readTimedOut(TimeoutInputStream.java:153)
+	at org.eclipse.jgit.util.io.TimeoutInputStream.read(TimeoutInputStream.java:125)
+	at org.eclipse.jgit.util.IO.readFully(IO.java:234)
+	at org.eclipse.jgit.transport.PacketLineIn.readLength(PacketLineIn.java:313)
+	at org.eclipse.jgit.transport.SideBandInputStream.needDataPacket(SideBandInputStream.java:157)
+	at org.eclipse.jgit.transport.SideBandInputStream.read(SideBandInputStream.java:139)
+	at org.eclipse.jgit.util.IO.readFully(IO.java:234)
+	at org.eclipse.jgit.transport.PacketLineIn.readLength(PacketLineIn.java:313)
+	at org.eclipse.jgit.transport.PacketLineIn.readString(PacketLineIn.java:177)
+	at org.eclipse.jgit.transport.BasePackPushConnection.readStringLongTimeout(BasePackPushConnection.java:437)
+	at org.eclipse.jgit.transport.BasePackPushConnection.readStatusReport(BasePackPushConnection.java:370)
+	at org.eclipse.jgit.transport.BasePackPushConnection.doPush(BasePackPushConnection.java:222)
+	... 9 more
+
+!ENTRY org.eclipse.egit.ui 4 0 2020-05-15 13:39:26.756
+!MESSAGE Can't connect to any repository: https://github.com/afafrh/JAVA-PROJECT.git (https://github.com/afafrh/JAVA-PROJECT.git: Read timed out after 300 000 ms)
+
+!ENTRY org.eclipse.egit.core 4 0 2020-05-15 18:23:02.281
+!MESSAGE An exception occurred during push on URI https://github.com/afafrh/JAVA-PROJECT.git: https://github.com/afafrh/JAVA-PROJECT.git: cannot open git-receive-pack
+!STACK 0
+org.eclipse.jgit.api.errors.TransportException: https://github.com/afafrh/JAVA-PROJECT.git: cannot open git-receive-pack
+	at org.eclipse.jgit.api.PushCommand.call(PushCommand.java:180)
+	at org.eclipse.egit.core.op.PushOperation.run(PushOperation.java:217)
+	at org.eclipse.egit.ui.internal.push.PushJob.performJob(PushJob.java:86)
+	at org.eclipse.egit.ui.internal.jobs.RepositoryJob.run(RepositoryJob.java:59)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.eclipse.jgit.errors.TransportException: https://github.com/afafrh/JAVA-PROJECT.git: cannot open git-receive-pack
+	at org.eclipse.jgit.transport.TransportHttp.connect(TransportHttp.java:626)
+	at org.eclipse.jgit.transport.TransportHttp.openPush(TransportHttp.java:467)
+	at org.eclipse.jgit.transport.PushProcess.execute(PushProcess.java:160)
+	at org.eclipse.jgit.transport.Transport.push(Transport.java:1368)
+	at org.eclipse.jgit.api.PushCommand.call(PushCommand.java:170)
+	... 4 more
+Caused by: java.net.ConnectException: Connect to github.com:443 [github.com/198.18.1.129] failed: Connection timed out: no further information github.com
+	at org.eclipse.jgit.util.HttpSupport.response(HttpSupport.java:237)
+	at org.eclipse.jgit.transport.TransportHttp.connect(TransportHttp.java:540)
+	... 8 more
+
+!ENTRY org.eclipse.egit.ui 4 0 2020-05-15 18:23:02.351
+!MESSAGE Can't connect to any repository: https://github.com/afafrh/JAVA-PROJECT.git (https://github.com/afafrh/JAVA-PROJECT.git: cannot open git-receive-pack)
