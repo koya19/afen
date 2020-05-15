@@ -6,8 +6,13 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="equals"/>
+		<item key="selection" value="note"/>
 		<list key="findhistory">
+			<item value="note"/>
+			<item value="toString"/>
+			<item value="addnote"/>
+			<item value="exist"/>
+			<item value="addClass"/>
 			<item value="equals"/>
 			<item value="afficheC"/>
 			<item value="affichef"/>
@@ -18,11 +23,6 @@
 			<item value="absStud"/>
 			<item value="f"/>
 			<item value="modnote"/>
-			<item value="note"/>
-			<item value="notes"/>
-			<item value="addnote"/>
-			<item value="Etudiant"/>
-			<item value="choisirS"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Student"/>

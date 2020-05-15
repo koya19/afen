@@ -31,10 +31,10 @@
     <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="java.util.InputMismatchException"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="java.util.Set"/>
-    <fullyQualifiedTypeName name="java.util.HashSet"/>
     <fullyQualifiedTypeName name="gestiondeScolarité.Module"/>
     <fullyQualifiedTypeName name="gestiondeScolarité.Element"/>
     <fullyQualifiedTypeName name="gestiondeScolarité.Absence"/>
     <fullyQualifiedTypeName name="gestiondeScolarité.EDT"/>
+    <fullyQualifiedTypeName name="java.util.HashSet"/>
+    <fullyQualifiedTypeName name="java.util.Set"/>
 </qualifiedTypeNameHistroy>

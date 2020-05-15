@@ -508,6 +508,7 @@ public class Project {
 									}//gestion des abscences
 									if(r2==3) {//retour
 										r1=0;
+										break;
 									}//retour
 									
 								}//MENU GESTION SCOLARIT2
