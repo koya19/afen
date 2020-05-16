@@ -6,8 +6,15 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="note"/>
+		<item key="selection" value="miniPV()"/>
 		<list key="findhistory">
+			<item value="miniPV()"/>
+			<item value="miniP"/>
+			<item value="mini"/>
+			<item value="addS"/>
+			<item value="add"/>
+			<item value="admin"/>
+			<item value="inscription"/>
 			<item value="note"/>
 			<item value="toString"/>
 			<item value="addnote"/>
@@ -16,13 +23,6 @@
 			<item value="equals"/>
 			<item value="afficheC"/>
 			<item value="affichef"/>
-			<item value="afficheF"/>
-			<item value="affiches"/>
-			<item value="afficheS"/>
-			<item value="addS"/>
-			<item value="absStud"/>
-			<item value="f"/>
-			<item value="modnote"/>
 		</list>
 		<list key="replacehistory">
 			<item value="Student"/>
