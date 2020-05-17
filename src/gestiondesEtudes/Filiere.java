@@ -1,0 +1,129 @@
+package gestiondesEtudes;
+import java.util.*;
+
+public class Filiere implements Comparable<Filiere>{
+
+protected String  nomFilière;
+protected Set <Promo> promoFiliere =new HashSet<>();
+protected Set <Class> classFiliere= new HashSet<>();
+protected Set <Student> studFiliere= new TreeSet<>();
+public Set <Prof> profFiliere =new HashSet<>();
+protected Ecole ecole;
+protected Respo r= new Respo ();
+Scanner sc=new Scanner(System.in);
+	
+	public Filiere() {
+		
+	}
+	
+	public Filiere(String a,Ecole ecole) {
+		nomFilière= a;
+		this.ecole=ecole;
+		ecole.filiereEcole.add(this);
+		System.out.println("\nVous avez créé la filière "+this.nomFilière);
+	}
+//-----------------------------------------------------------------------------
+	
+
+	public String toString() {
+		return  nomFilière ;
+	}
+//-------------------------------------------------------------------------------
+	public void removePromoFiliere (Promo p) {
+		 promoFiliere.remove(p);
+	 }
+	public void respoFiliere (Respo a) {
+		r=a;
+		System.out.println("\nVous avez désigné "+ r +" comme responsable de filière "+this.toString());
+	}
+	public void addpromoFiliere(Promo p) {
+	
+		promoFiliere.add(p);
+	}
+	@SuppressWarnings("rawtypes")
+	public void afficheClassFiliere() {
+		System.out.println("\nLes classes de la filière "  + this.toString());	
+		int i=1;
+		 Iterator iterator = classFiliere.iterator();
+		 while (iterator.hasNext()){
+	         System.out.println(" "+i+"-"+iterator.next());
+	         i++;
+		}
+ }
+	@SuppressWarnings("rawtypes")
+	public void afficheStudFiliere() {
+		 System.out.println("\nLes étudiants de la filière "  + this.toString());	
+		 int i=1;
+		 Iterator iterator = studFiliere.iterator();
+		 while (iterator.hasNext()){
+	         System.out.println(" "+i+"-"+iterator.next());
+		 }
+		}
+	@SuppressWarnings("rawtypes")
+	public void affichePromoFiliere() {
+		System.out.println("\nLes promotions de la filière "+ this.toString() );
+		int i=1;
+		Iterator iterator = promoFiliere.iterator();
+		while(iterator.hasNext()) {
+			System.out.println(" "+i+"-"+iterator.next());
+			i++;
+		}
+		
+	}
+	public Class choisirClassFilere() {
+		Class cl = new Class ();
+		int a=0;
+		while (a==0) {
+		System.out.println("\nChoisissez une classe :");
+		this.afficheClassFiliere();
+		try {
+			int classchoisie=sc.nextInt();
+		//	sc.nextLine();
+			if (0>classchoisie ||  classchoisie>this.classFiliere.size()) {
+				throw new InputMismatchException("Ce choix est invalide.")	;
+			}
+			int i=1;
+			for (Class c:this.classFiliere ) {
+				if (i==classchoisie) {
+					cl=c;
+					break;
+				}
+				else i++;
+			}
+			break;
+		
+	}catch(InputMismatchException e) {
+		System.out.println();
+		System.err.println("Ce choix est invalide");
+		sc.nextLine();
+		
+		
+	}
+	catch(NullPointerException e) {
+		System.out.println();
+		System.err.println("Pas de choix actuellement.");
+		sc.nextLine();
+		 
+	}
+		}
+		return cl;
+		}
+		
+		
+		 
+	
+	public int compareTo(Filiere f) {
+		
+		 return this.nomFilière.compareTo(f.nomFilière) ;
+	}
+	public boolean equals(Filiere f) {
+		return this.nomFilière.equals(f.nomFilière);
+	}
+
+	
+	
+	
+	
+	
+
+}
